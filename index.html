@@ -43,20 +43,20 @@
 * { margin:0; padding:0; box-sizing:border-box; }
 body { background:var(--bg); color:var(--text); font-family:'Noto Sans TC',sans-serif; font-size:15px; line-height:1.6; min-height:100vh; }
 
-/* ── header ── */
+/* header */
 header { background:var(--bg2); border-bottom:1px solid var(--border); padding:1.6rem 1.25rem 1.2rem; text-align:center; }
-.header-label { font-size:11px; letter-spacing:0.2em; color:var(--blue); text-transform:uppercase; margin-bottom:0.35rem; }
+.header-label { font-size:11px; letter-spacing:0.2em; color:var(--green); text-transform:uppercase; margin-bottom:0.35rem; }
 header h1 { font-family:'Noto Serif TC',serif; font-size:1.65rem; font-weight:600; color:var(--text); line-height:1.3; }
 .header-sub { font-size:13px; color:var(--text2); margin-top:0.25rem; }
 .badges { display:flex; justify-content:center; gap:7px; flex-wrap:wrap; margin-top:0.85rem; }
 .badge { display:inline-flex; align-items:center; gap:5px; border-radius:20px; padding:3px 11px; font-size:11px; }
-.badge-gold   { background:rgba(212,168,71,0.12); border:1px solid rgba(212,168,71,0.3); color:var(--gold); }
-.badge-blue   { background:var(--blue-dim);   border:1px solid var(--blue-border);   color:var(--blue); }
-.badge-green  { background:var(--green-dim);  border:1px solid var(--green-border);  color:var(--green); }
+.badge-gold  { background:rgba(26,92,48,0.1);  border:1px solid rgba(26,92,48,0.3);  color:var(--green); }
+.badge-blue  { background:var(--blue-dim);      border:1px solid var(--blue-border);  color:var(--blue); }
+.badge-green { background:var(--green-dim);     border:1px solid var(--green-border); color:var(--green); }
 .dot { width:5px; height:5px; border-radius:50%; background:currentColor; flex-shrink:0; }
 
-/* ── tabs ── */
-.days-nav { display:flex; overflow-x:auto; background:var(--bg2); border-bottom:1px solid var(--border); padding:0 0.5rem; scrollbar-width:none; position:sticky; top:0; z-index:50; }
+/* tabs */
+.days-nav { display:flex; overflow-x:auto; background:var(--bg2); border-bottom:1px solid var(--border); padding:0 0.5rem; scrollbar-width:none; position:sticky; top:0; z-index:50; box-shadow:0 1px 4px rgba(0,0,0,0.04); }
 .days-nav::-webkit-scrollbar { display:none; }
 .day-tab { flex-shrink:0; padding:0.6rem 0.9rem; font-size:12px; color:var(--text2); cursor:pointer; border-bottom:2px solid transparent; transition:all 0.18s; white-space:nowrap; text-align:center; line-height:1.4; }
 .day-tab.active { color:var(--blue); border-bottom-color:var(--blue); font-weight:500; }
@@ -64,32 +64,26 @@ header h1 { font-family:'Noto Serif TC',serif; font-size:1.65rem; font-weight:60
 .day-tab:hover { color:var(--text); }
 .tab-sub { font-size:10px; opacity:0.6; display:block; }
 
-/* ── main ── */
+/* main */
 main { padding:1rem 1rem 5.5rem; max-width:480px; margin:0 auto; }
 .day-section { display:none; }
 .day-section.active { display:block; }
 
-/* ── day header ── */
+/* day header */
 .day-header { display:flex; align-items:center; gap:9px; margin:0.3rem 0 1.1rem; }
 .day-badge { font-size:10px; font-weight:700; letter-spacing:0.08em; padding:3px 9px; border-radius:4px; flex-shrink:0; }
-.day-badge.normal    { background:var(--blue-dim);  color:var(--blue);  border:1px solid var(--blue-border); }
-.day-badge.race-day  { background:var(--green-dim); color:var(--green); border:1px solid var(--green-border); }
+.day-badge.normal   { background:var(--blue-dim);  color:var(--blue);  border:1px solid var(--blue-border); }
+.day-badge.race-day { background:var(--green-dim); color:var(--green); border:1px solid var(--green-border); }
 .day-title { font-size:14px; font-weight:500; color:var(--text); flex:1; }
 .theme-tag { font-size:10px; color:var(--text3); padding:2px 7px; border-radius:8px; background:var(--bg4); border:1px solid var(--border); flex-shrink:0; }
 
-/* ── timeline ──
-   Layout: time label sits at top of the column (padding-top 0.6rem),
-   the line runs full height behind everything,
-   the dot is positioned BELOW the time label (top: 2.2rem) so they never overlap. */
+/* timeline */
 .event-list { display:flex; flex-direction:column; }
 .event-item { display:flex; min-height:3.8rem; }
-
 .tl-col { width:56px; flex-shrink:0; position:relative; display:flex; flex-direction:column; align-items:center; }
 .tl-line { position:absolute; top:0; bottom:0; left:50%; transform:translateX(-50%); width:1px; background:var(--border); }
 .tl-time { position:relative; z-index:2; font-size:10px; color:var(--text3); padding-top:0.6rem; line-height:1.2; text-align:center; width:100%; }
 .tl-dot { position:absolute; top:2.2rem; left:50%; transform:translateX(-50%); width:9px; height:9px; border-radius:50%; z-index:1; }
-
-/* dot colours */
 .tl-dot.flight  { background:var(--blue-dim);   border:2px solid var(--blue); }
 .tl-dot.race    { background:var(--green-dim);  border:2px solid var(--green); }
 .tl-dot.food    { background:var(--orange-dim); border:2px solid var(--orange); }
@@ -97,16 +91,20 @@ main { padding:1rem 1rem 5.5rem; max-width:480px; margin:0 auto; }
 .tl-dot.car     { background:var(--red-dim);    border:2px solid var(--red); }
 .tl-dot.default { background:var(--bg4);        border:2px solid var(--text3); }
 
-/* ── cards ── */
-.event-card { flex:1; border-radius:10px; padding:0.7rem 0.95rem 0.8rem; margin:0.4rem 0 0.4rem 8px; position:relative; overflow:hidden; border-left-width:3px; border-left-style:solid; }
-
+/* cards */
+.event-card { flex:1; border-radius:10px; padding:0; margin:0.4rem 0 0.4rem 8px; overflow:hidden; border-left-width:3px; border-left-style:solid; }
 .event-card.flight { background:var(--blue-dim);   border-color:var(--blue);   border-top:1px solid var(--blue-border);   border-right:1px solid var(--blue-border);   border-bottom:1px solid var(--blue-border); }
 .event-card.race   { background:var(--green-dim);  border-color:var(--green);  border-top:1px solid var(--green-border);  border-right:1px solid var(--green-border);  border-bottom:1px solid var(--green-border); }
 .event-card.food   { background:var(--orange-dim); border-color:var(--orange); border-top:1px solid var(--orange-border); border-right:1px solid var(--orange-border); border-bottom:1px solid var(--orange-border); }
 .event-card.hotel  { background:var(--purple-dim); border-color:var(--purple); border-top:1px solid var(--purple-border); border-right:1px solid var(--purple-border); border-bottom:1px solid var(--purple-border); }
 .event-card.car    { background:var(--red-dim);    border-color:var(--red);    border-top:1px solid var(--red-border);    border-right:1px solid var(--red-border);    border-bottom:1px solid var(--red-border); }
-.event-card.default{ background:var(--bg3);        border-color:var(--text3);  border-top:1px solid var(--border);        border-right:1px solid var(--border);        border-bottom:1px solid var(--border); }
+.event-card.default{ background:var(--bg2);        border-color:var(--text3);  border-top:1px solid var(--border);        border-right:1px solid var(--border);        border-bottom:1px solid var(--border); }
 
+/* card image */
+.card-img { width:100%; height:130px; object-fit:cover; display:block; }
+
+/* card body */
+.card-body { padding:0.7rem 0.95rem 0.8rem; }
 .ev-type  { font-size:10px; letter-spacing:0.09em; text-transform:uppercase; font-weight:500; margin-bottom:2px; }
 .event-card.flight .ev-type { color:var(--blue); }
 .event-card.race   .ev-type { color:var(--green); }
@@ -115,31 +113,33 @@ main { padding:1rem 1rem 5.5rem; max-width:480px; margin:0 auto; }
 .event-card.car    .ev-type { color:var(--red); }
 .event-card.default .ev-type { color:var(--text2); }
 
-.ev-title { font-size:14px; font-weight:500; color:var(--text); line-height:1.4; }
-.ev-hint  { font-size:12px; color:var(--text2); margin-top:4px; line-height:1.55; }
+.ev-title   { font-size:14px; font-weight:500; color:var(--text); line-height:1.4; }
+.ev-en      { font-size:11px; color:var(--text3); margin-top:1px; }
+.ev-address { font-size:11px; color:var(--text2); margin-top:4px; display:flex; align-items:flex-start; gap:4px; }
+.ev-address::before { content:'📍'; font-size:10px; margin-top:1px; flex-shrink:0; }
+.ev-hint    { font-size:12px; color:var(--text2); margin-top:5px; line-height:1.55; }
+.ev-link    { display:inline-flex; align-items:center; gap:4px; margin-top:7px; font-size:11px; color:var(--blue); text-decoration:none; }
+.ev-link:hover { text-decoration:underline; }
 
-.ev-tag { display:inline-block; font-size:10px; padding:2px 8px; border-radius:10px; margin-top:5px; margin-right:4px; }
-.tag-warn  { background:rgba(210,153,34,0.15); color:var(--orange); border:1px solid var(--orange-border); }
+.ev-tag { display:inline-block; font-size:10px; padding:2px 8px; border-radius:10px; margin-top:6px; margin-right:4px; }
+.tag-warn  { background:rgba(184,92,0,0.12); color:var(--orange); border:1px solid var(--orange-border); }
 .tag-info  { background:var(--blue-dim);  color:var(--blue);  border:1px solid var(--blue-border); }
 .tag-race  { background:var(--green-dim); color:var(--green); border:1px solid var(--green-border); font-weight:500; }
 .tag-note  { background:var(--bg4); color:var(--text2); border:1px solid var(--border2); }
 
-/* ── people pills ── */
+/* people */
 .people { display:flex; flex-wrap:wrap; gap:4px; margin-top:7px; }
 .person { font-size:10px; padding:2px 8px; border-radius:10px; }
-.event-card.flight .person { background:rgba(56,139,253,0.15); color:var(--blue);   border:1px solid var(--blue-border); }
-.event-card.race   .person { background:rgba(63,185,80,0.15);  color:var(--green);  border:1px solid var(--green-border); }
-.event-card.food   .person { background:rgba(210,153,34,0.15); color:var(--orange); border:1px solid var(--orange-border); }
-.event-card.hotel  .person { background:rgba(163,113,247,0.15);color:var(--purple); border:1px solid var(--purple-border); }
-.event-card.car    .person { background:rgba(248,81,73,0.15);  color:var(--red);    border:1px solid var(--red-border); }
+.event-card.flight .person { background:rgba(37,84,160,0.1);  color:var(--blue);   border:1px solid var(--blue-border); }
+.event-card.race   .person { background:rgba(26,92,48,0.1);   color:var(--green);  border:1px solid var(--green-border); }
+.event-card.food   .person { background:rgba(184,92,0,0.1);   color:var(--orange); border:1px solid var(--orange-border); }
+.event-card.hotel  .person { background:rgba(92,32,128,0.1);  color:var(--purple); border:1px solid var(--purple-border); }
+.event-card.car    .person { background:rgba(176,32,32,0.1);  color:var(--red);    border:1px solid var(--red-border); }
 .event-card.default .person{ background:var(--bg4); color:var(--text2); border:1px solid var(--border2); }
 .person.michael { font-weight:500; border-width:1.5px !important; }
-.event-card.flight .person.michael { border-color:var(--blue) !important; }
-.event-card.race   .person.michael { border-color:var(--green) !important; }
-.event-card.hotel  .person.michael { border-color:var(--purple) !important; }
 
-/* ── footer ── */
-footer { position:fixed; bottom:0; left:0; right:0; background:var(--bg2); border-top:1px solid var(--border); padding:0.5rem 0.6rem; display:flex; gap:5px; z-index:100; }
+/* footer */
+footer { position:fixed; bottom:0; left:0; right:0; background:var(--bg2); border-top:1px solid var(--border); padding:0.5rem 0.6rem; display:flex; gap:5px; z-index:100; box-shadow:0 -1px 4px rgba(0,0,0,0.04); }
 .ft-btn { flex:1; background:transparent; border:1px solid var(--border); border-radius:8px; color:var(--text2); font-size:10px; padding:5px 2px; cursor:pointer; font-family:'Noto Sans TC',sans-serif; transition:all 0.15s; line-height:1.4; text-align:center; }
 .ft-btn:hover { background:var(--bg3); color:var(--text); border-color:var(--border2); }
 .ft-btn.active { background:var(--blue-dim); color:var(--blue); border-color:var(--blue-border); font-weight:500; }
@@ -159,7 +159,6 @@ footer { position:fixed; bottom:0; left:0; right:0; background:var(--bg2); borde
   </div>
 </header>
 
-<!-- tabs -->
 <div class="days-nav">
   <div class="day-tab active"   onclick="go(0)">5/7<span class="tab-sub">Thu · 出發</span></div>
   <div class="day-tab"          onclick="go(1)">5/8<span class="tab-sub">Fri · 仙台</span></div>
@@ -172,9 +171,7 @@ footer { position:fixed; bottom:0; left:0; right:0; background:var(--bg2); borde
 
 <main>
 
-<!-- ══════════════════════════════════════════
-     DAY 1 · 5/7 Thu · 出發
-══════════════════════════════════════════ -->
+<!-- ══════ DAY 1 · 5/7 Thu ══════ -->
 <div class="day-section active" id="d0">
   <div class="day-header">
     <span class="day-badge normal">DAY 1</span>
@@ -186,75 +183,96 @@ footer { position:fixed; bottom:0; left:0; right:0; background:var(--bg2); borde
     <div class="event-item">
       <div class="tl-col"><div class="tl-line"></div><div class="tl-dot flight"></div><div class="tl-time">10:05</div></div>
       <div class="event-card flight">
-        <div class="ev-type">去程航班 · BR 118</div>
-        <div class="ev-title">Depart TPE → SDJ</div>
-        <div class="people"><span class="person">Jason</span><span class="person">Penny</span><span class="person">Alina</span><span class="person">Gary</span></div>
-        <div class="ev-hint">出發前確認護照、報名確認信、跑鞋都已打包</div>
+        <div class="card-body">
+          <div class="ev-type">去程航班 · BR 118</div>
+          <div class="ev-title">Depart TPE → SDJ</div>
+          <div class="people"><span class="person">Jason</span><span class="person">Penny</span><span class="person">Alina</span><span class="person">Gary</span></div>
+          <div class="ev-hint">出發前確認護照、報名確認信、跑鞋都已打包</div>
+        </div>
       </div>
     </div>
 
     <div class="event-item">
       <div class="tl-col"><div class="tl-line"></div><div class="tl-dot flight"></div><div class="tl-time">11:35</div></div>
       <div class="event-card flight">
-        <div class="ev-type">去程航班 · JX 862</div>
-        <div class="ev-title">Depart TPE → SDJ</div>
-        <div class="people"><span class="person michael">Michael</span><span class="person">Leslie</span></div>
+        <div class="card-body">
+          <div class="ev-type">去程航班 · JX 862</div>
+          <div class="ev-title">Depart TPE → SDJ</div>
+          <div class="people"><span class="person michael">Michael</span><span class="person">Leslie</span></div>
+        </div>
       </div>
     </div>
 
     <div class="event-item">
       <div class="tl-col"><div class="tl-line"></div><div class="tl-dot food"></div><div class="tl-time">機上</div></div>
       <div class="event-card food">
-        <div class="ev-type">餐飲</div>
-        <div class="ev-title">On flight</div>
+        <div class="card-body">
+          <div class="ev-type">餐飲</div>
+          <div class="ev-title">On flight</div>
+        </div>
       </div>
     </div>
 
     <div class="event-item">
       <div class="tl-col"><div class="tl-line"></div><div class="tl-dot flight"></div><div class="tl-time">14:35</div></div>
       <div class="event-card flight">
-        <div class="ev-type">抵達仙台 SDJ · BR 118</div>
-        <div class="ev-title">Arrive Sendai</div>
-        <div class="people"><span class="person">Jason</span><span class="person">Penny</span><span class="person">Alina</span><span class="person">Gary</span></div>
-        <div class="ev-hint">入境後搭乘電車或巴士前往仙台市區約 30–45 分鐘</div>
+        <div class="card-body">
+          <div class="ev-type">抵達仙台 SDJ · BR 118</div>
+          <div class="ev-title">Arrive Sendai</div>
+          <div class="people"><span class="person">Jason</span><span class="person">Penny</span><span class="person">Alina</span><span class="person">Gary</span></div>
+          <div class="ev-hint">入境後搭乘電車或巴士前往仙台市區約 30–45 分鐘</div>
+        </div>
       </div>
     </div>
 
     <div class="event-item">
       <div class="tl-col"><div class="tl-line"></div><div class="tl-dot flight"></div><div class="tl-time">16:00</div></div>
       <div class="event-card flight">
-        <div class="ev-type">抵達仙台 SDJ · JX 862</div>
-        <div class="ev-title">Arrive Sendai</div>
-        <div class="people"><span class="person michael">Michael</span><span class="person">Leslie</span></div>
+        <div class="card-body">
+          <div class="ev-type">抵達仙台 SDJ · JX 862</div>
+          <div class="ev-title">Arrive Sendai</div>
+          <div class="people"><span class="person michael">Michael</span><span class="person">Leslie</span></div>
+        </div>
       </div>
     </div>
 
     <div class="event-item">
       <div class="tl-col"><div class="tl-line"></div><div class="tl-dot hotel"></div><div class="tl-time">下午</div></div>
       <div class="event-card hotel">
-        <div class="ev-type">住宿 · Check-in</div>
-        <div class="ev-title">Hotel Grand Bach Sendai</div>
-        <div class="people"><span class="person michael">Michael</span><span class="person">Leslie</span><span class="person">Mikey</span><span class="person">Gary</span><span class="person">Jason</span><span class="person">Penny</span><span class="person">Alina</span></div>
-        <div class="ev-hint">仙台市中心，交通便利</div>
+        <img class="card-img" src="https://manager.reservation.jp/cmn/img/facility/10000001/M/1655079504145167.jpg" alt="Hotel Grand Bach Sendai" onerror="this.style.display='none'">
+        <div class="card-body">
+          <div class="ev-type">住宿 · Check-in</div>
+          <div class="ev-title">Hotel Grand Bach Sendai</div>
+          <div class="ev-address">宮城縣仙台市青葉區中央4-6-1</div>
+          <div class="people"><span class="person michael">Michael</span><span class="person">Leslie</span><span class="person">Mikey</span><span class="person">Gary</span><span class="person">Jason</span><span class="person">Penny</span><span class="person">Alina</span></div>
+          <div class="ev-hint">仙台市中心，步行可達各主要景點</div>
+          <span class="ev-tag tag-note">Check-in 時間 15:00</span>
+          <a class="ev-link" href="https://maps.app.goo.gl/AHFfAjYG7bC4iCT59" target="_blank">Google Maps ↗</a>
+        </div>
       </div>
     </div>
 
     <div class="event-item">
-      <div class="tl-col"><div class="tl-line"></div><div class="tl-dot food"></div><div class="tl-time">晚餐</div></div>
+      <div class="tl-col"><div class="tl-line"></div><div class="tl-dot food"></div><div class="tl-time">20:00</div></div>
       <div class="event-card food">
-        <div class="ev-type">晚餐</div>
-        <div class="ev-title">牛舌燒肉餐廳（TBD）</div>
-        <div class="ev-hint">仙台名物！建議第一晚就吃，犒賞長途飛行</div>
-        <span class="ev-tag tag-note">比賽 -3 天</span>
+        <img class="card-img" src="https://www.google.com/maps/place/Beef+Tongue+cuisine+Kaku+Mitsukoshimae+branch/@38.2646829,140.8703724,3a,77.4y,90t/data=!3m8!1e2!3m6!1sAF1QipObznF0_JRUCQ07xoD7334sSILPHVHyfkAtUVJH!2e10!3e12!6shttps:%2F%2Flh3.googleusercontent.com%2Fp%2FAF1QipObznF0_JRUCQ07xoD7334sSILPHVHyfkAtUVJH%3Dw203-h131-k-no!7i1206!8i781" alt="牛たん料理 閣" onerror="this.style.display='none'">
+        <div class="card-body">
+          <div class="ev-type">晚餐</div>
+          <div class="ev-title">牛たん料理 閣 三越前店</div>
+          <div class="ev-en">Beef Tongue Kaku Mitsukoshimae</div>
+          <div class="ev-address">4-9-1 Ichibancho, Aoba-ku, Sendai（三越前 2F）</div>
+          <div class="ev-hint">仙台牛舌 No.1，必比登推薦。第一晚就吃，犒賞長途飛行！</div>
+          <span class="ev-tag tag-warn">限時 90 分鐘</span>
+          <span class="ev-tag tag-note">比賽 -3 天</span>
+          <a class="ev-link" href="https://maps.app.goo.gl/aqBYnXpXwfBzZLg98" target="_blank">Google Maps ↗</a>
+        </div>
       </div>
     </div>
 
   </div>
 </div>
 
-<!-- ══════════════════════════════════════════
-     DAY 2 · 5/8 Fri · 仙台
-══════════════════════════════════════════ -->
+<!-- ══════ DAY 2 · 5/8 Fri ══════ -->
 <div class="day-section" id="d1">
   <div class="day-header">
     <span class="day-badge normal">DAY 2</span>
@@ -266,56 +284,64 @@ footer { position:fixed; bottom:0; left:0; right:0; background:var(--bg2); borde
     <div class="event-item">
       <div class="tl-col"><div class="tl-line"></div><div class="tl-dot default"></div><div class="tl-time">上午</div></div>
       <div class="event-card default">
-        <div class="ev-type">晨間活動</div>
-        <div class="ev-title">市區晨跑 30 min</div>
-        <div class="ev-hint">輕鬆配速，感受仙台街道，賽前保存體力</div>
-        <span class="ev-tag tag-note">比賽 -2 天</span>
+        <div class="card-body">
+          <div class="ev-type">晨間活動</div>
+          <div class="ev-title">市區晨跑 30 min</div>
+          <div class="ev-hint">輕鬆配速，感受仙台街道。賽前 -2 天，保存體力</div>
+          <span class="ev-tag tag-note">比賽 -2 天</span>
+        </div>
       </div>
     </div>
 
     <div class="event-item">
       <div class="tl-col"><div class="tl-line"></div><div class="tl-dot default"></div><div class="tl-time">下午</div></div>
       <div class="event-card default">
-        <div class="ev-type">觀光</div>
-        <div class="ev-title">仙台市區導覽</div>
-        <div class="ev-hint">青葉城跡、定禪寺通、榴岡公園等，步伐輕鬆</div>
+        <div class="card-body">
+          <div class="ev-type">觀光</div>
+          <div class="ev-title">仙台市區導覽</div>
+          <div class="ev-hint">青葉城跡、定禪寺通、榴岡公園等，步伐輕鬆</div>
+        </div>
       </div>
     </div>
 
     <div class="event-item">
       <div class="tl-col"><div class="tl-line"></div><div class="tl-dot race"></div><div class="tl-time">下午</div></div>
       <div class="event-card race">
-        <div class="ev-type">選手服務</div>
-        <div class="ev-title">馬拉松 Check-in・領號碼布</div>
-        <div class="ev-hint">仙台半馬 EXPO 會場</div>
-        <span class="ev-tag tag-warn">勿忘攜帶報名確認信</span>
+        <div class="card-body">
+          <div class="ev-type">選手服務</div>
+          <div class="ev-title">馬拉松 Check-in・領號碼布</div>
+          <div class="ev-hint">仙台半馬 EXPO 會場，順便買紀念品</div>
+          <span class="ev-tag tag-warn">勿忘攜帶報名確認信</span>
+        </div>
       </div>
     </div>
 
     <div class="event-item">
       <div class="tl-col"><div class="tl-line"></div><div class="tl-dot default"></div><div class="tl-time">下午</div></div>
       <div class="event-card default">
-        <div class="ev-type">購物</div>
-        <div class="ev-title">Ishi Sports · Yodobashi Sendai</div>
-        <div class="ev-hint">補充跑步裝備或買伴手禮的好去處</div>
+        <div class="card-body">
+          <div class="ev-type">購物</div>
+          <div class="ev-title">Ishi Sports · Yodobashi Sendai</div>
+          <div class="ev-hint">大型體育用品店，補充裝備或買伴手禮的好去處</div>
+        </div>
       </div>
     </div>
 
     <div class="event-item">
       <div class="tl-col"><div class="tl-line"></div><div class="tl-dot hotel"></div><div class="tl-time">住宿</div></div>
       <div class="event-card hotel">
-        <div class="ev-type">住宿</div>
-        <div class="ev-title">Hotel Grand Bach Sendai</div>
-        <div class="people"><span class="person michael">Michael</span><span class="person">Leslie</span><span class="person">Mikey</span><span class="person">Gary</span><span class="person">Jason</span><span class="person">Penny</span><span class="person">Alina</span></div>
+        <div class="card-body">
+          <div class="ev-type">住宿</div>
+          <div class="ev-title">Hotel Grand Bach Sendai</div>
+          <div class="people"><span class="person michael">Michael</span><span class="person">Leslie</span><span class="person">Mikey</span><span class="person">Gary</span><span class="person">Jason</span><span class="person">Penny</span><span class="person">Alina</span></div>
+        </div>
       </div>
     </div>
 
   </div>
 </div>
 
-<!-- ══════════════════════════════════════════
-     DAY 3 · 5/9 Sat · 松島
-══════════════════════════════════════════ -->
+<!-- ══════ DAY 3 · 5/9 Sat ══════ -->
 <div class="day-section" id="d2">
   <div class="day-header">
     <span class="day-badge normal">DAY 3</span>
@@ -327,38 +353,43 @@ footer { position:fixed; bottom:0; left:0; right:0; background:var(--bg2); borde
     <div class="event-item">
       <div class="tl-col"><div class="tl-line"></div><div class="tl-dot default"></div><div class="tl-time">全天</div></div>
       <div class="event-card default">
-        <div class="ev-type">觀光</div>
-        <div class="ev-title">宮城松島・日本三景</div>
-        <div class="ev-hint">海灣小島散步與遊船體驗，景色絕美。賽前 -1 天，以輕鬆步伐為主</div>
-        <span class="ev-tag tag-note">比賽 -1 天</span>
+        <img class="card-img" src="https://cdn.jeepe.jp/uploads/public_image/image/434/normal_webp_ccf0cf4a-45e1-4962-aed7-2fd91c5abdc2.webp" alt="宮城松島" onerror="this.style.display='none'">
+        <div class="card-body">
+          <div class="ev-type">觀光</div>
+          <div class="ev-title">宮城松島・日本三景</div>
+          <div class="ev-hint">海灣小島散步與遊船體驗，景色絕美。賽前 -1 天，以輕鬆步伐為主</div>
+          <span class="ev-tag tag-note">比賽 -1 天</span>
+        </div>
       </div>
     </div>
 
     <div class="event-item">
       <div class="tl-col"><div class="tl-line"></div><div class="tl-dot food"></div><div class="tl-time">晚餐</div></div>
       <div class="event-card food">
-        <div class="ev-type">選手之夜 · Carbo Loading</div>
-        <div class="ev-title">賽前碳水補給晚餐（TBD）</div>
-        <div class="ev-hint">以白飯、烏龍麵、義大利麵等高碳水為主，避免高脂肪與高纖維食物</div>
-        <span class="ev-tag tag-race">明天是比賽日！</span>
+        <div class="card-body">
+          <div class="ev-type">選手之夜 · Carbo Loading</div>
+          <div class="ev-title">賽前碳水補給晚餐（TBD）</div>
+          <div class="ev-hint">盡量吃高碳水！白飯、烏龍麵、義大利麵，避免高脂肪與高纖維食物</div>
+          <span class="ev-tag tag-race">明天是比賽日！</span>
+        </div>
       </div>
     </div>
 
     <div class="event-item">
       <div class="tl-col"><div class="tl-line"></div><div class="tl-dot hotel"></div><div class="tl-time">住宿</div></div>
       <div class="event-card hotel">
-        <div class="ev-type">住宿</div>
-        <div class="ev-title">Hotel Grand Bach Sendai</div>
-        <div class="people"><span class="person michael">Michael</span><span class="person">Leslie</span><span class="person">Mikey</span><span class="person">Gary</span><span class="person">Jason</span><span class="person">Penny</span><span class="person">Alina</span></div>
+        <div class="card-body">
+          <div class="ev-type">住宿</div>
+          <div class="ev-title">Hotel Grand Bach Sendai</div>
+          <div class="people"><span class="person michael">Michael</span><span class="person">Leslie</span><span class="person">Mikey</span><span class="person">Gary</span><span class="person">Jason</span><span class="person">Penny</span><span class="person">Alina</span></div>
+        </div>
       </div>
     </div>
 
   </div>
 </div>
 
-<!-- ══════════════════════════════════════════
-     DAY 4 · 5/10 Sun · RACE DAY
-══════════════════════════════════════════ -->
+<!-- ══════ DAY 4 · 5/10 Sun · RACE DAY ══════ -->
 <div class="day-section" id="d3">
   <div class="day-header">
     <span class="day-badge race-day">RACE DAY</span>
@@ -370,56 +401,65 @@ footer { position:fixed; bottom:0; left:0; right:0; background:var(--bg2); borde
     <div class="event-item">
       <div class="tl-col"><div class="tl-line"></div><div class="tl-dot race"></div><div class="tl-time">清晨</div></div>
       <div class="event-card race">
-        <div class="ev-type">賽前準備</div>
-        <div class="ev-title">起床・早餐・出發</div>
-        <div class="ev-hint">起跑前 2–3 小時用餐，香蕉、吐司、運動飲料為主</div>
-        <span class="ev-tag tag-warn">提早 45 分鐘抵達起跑區</span>
+        <div class="card-body">
+          <div class="ev-type">賽前準備</div>
+          <div class="ev-title">起床・早餐・出發</div>
+          <div class="ev-hint">起跑前 2–3 小時用餐，香蕉、吐司、運動飲料為主</div>
+          <span class="ev-tag tag-warn">提早 45 分鐘抵達起跑區</span>
+        </div>
       </div>
     </div>
 
     <div class="event-item">
       <div class="tl-col"><div class="tl-line"></div><div class="tl-dot race"></div><div class="tl-time">10:05</div></div>
       <div class="event-card race">
-        <div class="ev-type">仙台半程馬拉松</div>
-        <div class="ev-title">First Wave — 起跑！</div>
-        <div class="ev-hint">21.0975 km，全力以赴——仙台的風景陪著你跑完每一公里</div>
-        <span class="ev-tag tag-race">21.0975 km</span>
+        <img class="card-img" src="https://www.sendaihalf.com/cms/wp-content/themes/sendaihalf/images/main_2026.jpg" alt="仙台半馬" onerror="this.style.display='none'">
+        <div class="card-body">
+          <div class="ev-type">仙台國際半程馬拉松</div>
+          <div class="ev-title">First Wave — 起跑！</div>
+          <div class="ev-hint">21.0975 km，全力以赴——仙台的風景陪著你跑完每一公里</div>
+          <span class="ev-tag tag-race">21.0975 km</span>
+        </div>
       </div>
     </div>
 
     <div class="event-item">
       <div class="tl-col"><div class="tl-line"></div><div class="tl-dot race"></div><div class="tl-time">10:15</div></div>
       <div class="event-card race">
-        <div class="ev-type">仙台半程馬拉松</div>
-        <div class="ev-title">Second Wave — 起跑！</div>
+        <div class="card-body">
+          <div class="ev-type">仙台國際半程馬拉松</div>
+          <div class="ev-title">Second Wave — 起跑！</div>
+        </div>
       </div>
     </div>
 
     <div class="event-item">
       <div class="tl-col"><div class="tl-line"></div><div class="tl-dot food"></div><div class="tl-time">中午後</div></div>
       <div class="event-card food">
-        <div class="ev-type">完賽慶功宴</div>
-        <div class="ev-title">慶功宴（TBD）</div>
-        <div class="ev-hint">你跑完了，盡情享用！</div>
-        <span class="ev-tag tag-info">完賽獎牌合照必拍</span>
+        <div class="card-body">
+          <div class="ev-type">完賽慶功宴</div>
+          <div class="ev-title">慶功宴（TBD）</div>
+          <div class="ev-hint">你跑完了，盡情享用！</div>
+          <span class="ev-tag tag-info">完賽獎牌合照必拍</span>
+        </div>
       </div>
     </div>
 
     <div class="event-item">
       <div class="tl-col"><div class="tl-line"></div><div class="tl-dot hotel"></div><div class="tl-time">住宿</div></div>
       <div class="event-card hotel">
-        <div class="ev-type">住宿</div>
-        <div class="ev-title">Hotel Grand Bach Sendai</div>
-        <div class="people"><span class="person michael">Michael</span><span class="person">Leslie</span><span class="person">Mikey</span><span class="person">Gary</span><span class="person">Jason</span><span class="person">Penny</span><span class="person">Alina</span></div>
+        <div class="card-body">
+          <div class="ev-type">住宿</div>
+          <div class="ev-title">Hotel Grand Bach Sendai</div>
+          <div class="people"><span class="person michael">Michael</span><span class="person">Leslie</span><span class="person">Mikey</span><span class="person">Gary</span><span class="person">Jason</span><span class="person">Penny</span><span class="person">Alina</span></div>
+        </div>
       </div>
     </div>
 
   </div>
 </div>
 
-<!-- ══════════════════════════════════════════
-     DAY 5 · 5/11 Mon · 品酒
-══════════════════════════════════════════ -->
+<!-- ══════ DAY 5 · 5/11 Mon ══════ -->
 <div class="day-section" id="d4">
   <div class="day-header">
     <span class="day-badge normal">DAY 5</span>
@@ -431,49 +471,61 @@ footer { position:fixed; bottom:0; left:0; right:0; background:var(--bg2); borde
     <div class="event-item">
       <div class="tl-col"><div class="tl-line"></div><div class="tl-dot car"></div><div class="tl-time">09:00</div></div>
       <div class="event-card car">
-        <div class="ev-type">租車</div>
-        <div class="ev-title">Michael 取租車</div>
-        <div class="people"><span class="person michael">Michael</span></div>
+        <div class="card-body">
+          <div class="ev-type">租車</div>
+          <div class="ev-title">Michael 取租車</div>
+          <div class="people"><span class="person michael">Michael</span></div>
+        </div>
       </div>
     </div>
 
     <div class="event-item">
       <div class="tl-col"><div class="tl-line"></div><div class="tl-dot default"></div><div class="tl-time">上午</div></div>
       <div class="event-card default">
-        <div class="ev-type">威士忌巡禮</div>
-        <div class="ev-title">Nikka 仙台宮城峽蒸餾所</div>
-        <div class="people"><span class="person michael">Michael</span><span class="person">Leslie</span><span class="person">Mikey</span><span class="person">Gary</span></div>
-        <div class="ev-hint">日本威士忌聖地，建議事先預約導覽行程</div>
-        <span class="ev-tag tag-info">自費品飲體驗</span>
+        <img class="card-img" src="https://www.google.com/maps/place/Nikka+Whisky+Sendai+Factory/@38.3127009,140.6489391,3a,75y,90t/data=!3m8!1e2!3m6!1sAF1QipOehi62LLZO7jIYJQLUPWK4ZZp37Lpz2Td2ADw!2e10!3e12!6shttps:%2F%2Flh3.googleusercontent.com%2Fp%2FAF1QipOehi62LLZO7jIYJQLUPWK4ZZp37Lpz2Td2ADw%3Dw203-h107-k-no!7i4096!8i2160" alt="Nikka 蒸餾所" onerror="this.style.display='none'">
+        <div class="card-body">
+          <div class="ev-type">威士忌巡禮</div>
+          <div class="ev-title">Nikka 威士忌仙台宮城峽蒸餾所</div>
+          <div class="ev-en">Nikka Miyagikyo Distillery</div>
+          <div class="ev-address">1番地 Nikka, Aoba Ward, Sendai, Miyagi</div>
+          <div class="people"><span class="person michael">Michael</span><span class="person">Leslie</span><span class="person">Mikey</span><span class="person">Gary</span></div>
+          <div class="ev-hint">日本威士忌聖地，事先預約導覽行程</div>
+          <span class="ev-tag tag-info">自費品飲體驗</span>
+          <a class="ev-link" href="https://maps.app.goo.gl/RqigaJxqCVizF8xj6" target="_blank">Google Maps ↗</a>
+        </div>
       </div>
     </div>
 
     <div class="event-item">
       <div class="tl-col"><div class="tl-line"></div><div class="tl-dot flight"></div><div class="tl-time">16:05</div></div>
       <div class="event-card flight">
-        <div class="ev-type">回程航班 · BR 117</div>
-        <div class="ev-title">Depart SDJ → TPE</div>
-        <div class="people"><span class="person">Jason</span><span class="person">Penny</span><span class="person">Alina</span></div>
-        <div class="ev-hint">部分成員先行返台</div>
+        <div class="card-body">
+          <div class="ev-type">回程航班 · BR 117</div>
+          <div class="ev-title">Depart SDJ → TPE</div>
+          <div class="people"><span class="person">Jason</span><span class="person">Penny</span><span class="person">Alina</span></div>
+          <div class="ev-hint">部分成員先行返台</div>
+        </div>
       </div>
     </div>
 
     <div class="event-item">
       <div class="tl-col"><div class="tl-line"></div><div class="tl-dot hotel"></div><div class="tl-time">住宿</div></div>
       <div class="event-card hotel">
-        <div class="ev-type">住宿 · 作並溫泉</div>
-        <div class="ev-title">Yudukushi Salon 一之坊</div>
-        <div class="people"><span class="person michael">Michael</span><span class="person">Leslie</span><span class="person">Mikey</span><span class="person">Gary</span></div>
-        <div class="ev-hint">作並溫泉，賽後泡湯最療癒。入住後好好放鬆雙腿</div>
+        <img class="card-img" src="https://ichinobo.com/wp-content/themes/ichinobo/assets/images/sakunami/onsen/hero_img_spring_pc.webp" alt="一之坊" onerror="this.style.display='none'">
+        <div class="card-body">
+          <div class="ev-type">住宿 · 作並溫泉</div>
+          <div class="ev-title">Yudukushi Salon 一之坊</div>
+          <div class="ev-en">Yudukushi Salon Ichinobo</div>
+          <div class="people"><span class="person michael">Michael</span><span class="person">Leslie</span><span class="person">Mikey</span><span class="person">Gary</span></div>
+          <div class="ev-hint">作並溫泉，賽後泡湯最療癒。入住後好好放鬆雙腿</div>
+        </div>
       </div>
     </div>
 
   </div>
 </div>
 
-<!-- ══════════════════════════════════════════
-     DAY 6 · 5/12 Tue · 溫泉
-══════════════════════════════════════════ -->
+<!-- ══════ DAY 6 · 5/12 Tue ══════ -->
 <div class="day-section" id="d5">
   <div class="day-header">
     <span class="day-badge normal">DAY 6</span>
@@ -485,27 +537,29 @@ footer { position:fixed; bottom:0; left:0; right:0; background:var(--bg2); borde
     <div class="event-item">
       <div class="tl-col"><div class="tl-line"></div><div class="tl-dot flight"></div><div class="tl-time">17:20</div></div>
       <div class="event-card flight">
-        <div class="ev-type">回程航班 · JX 863</div>
-        <div class="ev-title">Depart SDJ → TPE</div>
-        <div class="people"><span class="person">Mikey</span></div>
+        <div class="card-body">
+          <div class="ev-type">回程航班 · JX 863</div>
+          <div class="ev-title">Depart SDJ → TPE</div>
+          <div class="people"><span class="person">Mikey</span></div>
+        </div>
       </div>
     </div>
 
     <div class="event-item">
       <div class="tl-col"><div class="tl-line"></div><div class="tl-dot hotel"></div><div class="tl-time">住宿</div></div>
       <div class="event-card hotel">
-        <div class="ev-type">住宿</div>
-        <div class="ev-title">Hotel Metropolitan Sendai East</div>
-        <div class="people"><span class="person michael">Michael</span><span class="person">Leslie</span></div>
+        <div class="card-body">
+          <div class="ev-type">住宿</div>
+          <div class="ev-title">Hotel Metropolitan Sendai East</div>
+          <div class="people"><span class="person michael">Michael</span><span class="person">Leslie</span></div>
+        </div>
       </div>
     </div>
 
   </div>
 </div>
 
-<!-- ══════════════════════════════════════════
-     DAY 7 · 5/13 Wed · 返台
-══════════════════════════════════════════ -->
+<!-- ══════ DAY 7 · 5/13 Wed ══════ -->
 <div class="day-section" id="d6">
   <div class="day-header">
     <span class="day-badge normal">DAY 7</span>
@@ -517,29 +571,35 @@ footer { position:fixed; bottom:0; left:0; right:0; background:var(--bg2); borde
     <div class="event-item">
       <div class="tl-col"><div class="tl-line"></div><div class="tl-dot car"></div><div class="tl-time">09:00</div></div>
       <div class="event-card car">
-        <div class="ev-type">租車</div>
-        <div class="ev-title">Michael 還租車</div>
-        <div class="people"><span class="person michael">Michael</span></div>
+        <div class="card-body">
+          <div class="ev-type">租車</div>
+          <div class="ev-title">Michael 還租車</div>
+          <div class="people"><span class="person michael">Michael</span></div>
+        </div>
       </div>
     </div>
 
     <div class="event-item">
       <div class="tl-col"><div class="tl-line"></div><div class="tl-dot flight"></div><div class="tl-time">17:20</div></div>
       <div class="event-card flight">
-        <div class="ev-type">回程航班 · JX 863</div>
-        <div class="ev-title">Depart SDJ → TPE</div>
-        <div class="people"><span class="person michael">Michael</span><span class="person">Leslie</span></div>
+        <div class="card-body">
+          <div class="ev-type">回程航班 · JX 863</div>
+          <div class="ev-title">Depart SDJ → TPE</div>
+          <div class="people"><span class="person michael">Michael</span><span class="person">Leslie</span></div>
+        </div>
       </div>
     </div>
 
     <div class="event-item">
       <div class="tl-col"><div class="tl-line"></div><div class="tl-dot flight"></div><div class="tl-time">20:10</div></div>
       <div class="event-card flight">
-        <div class="ev-type">抵達桃園</div>
-        <div class="ev-title">Arrive TPE · JX 863</div>
-        <div class="people"><span class="person michael">Michael</span><span class="person">Leslie</span></div>
-        <div class="ev-hint">帶著完賽獎牌與驕傲回家</div>
-        <span class="ev-tag tag-race">完賽！</span>
+        <div class="card-body">
+          <div class="ev-type">抵達桃園</div>
+          <div class="ev-title">Arrive TPE · JX 863</div>
+          <div class="people"><span class="person michael">Michael</span><span class="person">Leslie</span></div>
+          <div class="ev-hint">帶著完賽獎牌與驕傲回家</div>
+          <span class="ev-tag tag-race">完賽！</span>
+        </div>
       </div>
     </div>
 
@@ -548,7 +608,6 @@ footer { position:fixed; bottom:0; left:0; right:0; background:var(--bg2); borde
 
 </main>
 
-<!-- footer nav -->
 <footer>
   <button class="ft-btn active"   onclick="go(0)">5/7<br>出發</button>
   <button class="ft-btn"          onclick="go(1)">5/8<br>仙台</button>
