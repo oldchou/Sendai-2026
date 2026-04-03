@@ -7,339 +7,566 @@
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600&family=Noto+Sans+TC:wght@400;500&display=swap" rel="stylesheet">
 <style>
 :root {
-  --bg: #f4f7f4;
-  --bg2: #ffffff;
-  --bg3: #edf3ed;
-  --text: #1a2e1f;
-  --text2: #5a7862;
-  --border: rgba(46,125,69,0.14);
-  --sendai: #2e7d45;
-  --sendai-light: #3a9455;
-  --sendai-pale: #e8f5e9;
+  --bg:    #0d1117;
+  --bg2:   #161b22;
+  --bg3:   #1c2333;
+  --bg4:   #21262d;
+  --text:  #e6edf3;
+  --text2: #8b949e;
+  --text3: #6e7681;
+  --border: rgba(255,255,255,0.07);
+  --border2: rgba(255,255,255,0.12);
 
-  /* card accent colours */
-  --c-flight:  #1565c0;
-  --c-flight-bg: #e8f0fe;
-  --c-flight-border: rgba(21,101,192,0.2);
+  /* card colours */
+  --blue:        #388bfd;
+  --blue-dim:    rgba(56,139,253,0.12);
+  --blue-border: rgba(56,139,253,0.25);
 
-  --c-race:    #2e7d45;
-  --c-race-bg: #e8f5e9;
-  --c-race-border: rgba(46,125,69,0.22);
+  --green:        #3fb950;
+  --green-dim:    rgba(63,185,80,0.1);
+  --green-border: rgba(63,185,80,0.25);
 
-  --c-food:    #e65100;
-  --c-food-bg: #fff3e0;
-  --c-food-border: rgba(230,81,0,0.2);
+  --orange:        #d29922;
+  --orange-dim:    rgba(210,153,34,0.1);
+  --orange-border: rgba(210,153,34,0.25);
 
-  --c-hotel:   #6a1b9a;
-  --c-hotel-bg: #f3e5f5;
-  --c-hotel-border: rgba(106,27,154,0.2);
+  --purple:        #a371f7;
+  --purple-dim:    rgba(163,113,247,0.1);
+  --purple-border: rgba(163,113,247,0.22);
 
-  --c-car:     #c62828;
-  --c-car-bg:  #ffebee;
-  --c-car-border: rgba(198,40,40,0.2);
+  --red:        #f85149;
+  --red-dim:    rgba(248,81,73,0.1);
+  --red-border: rgba(248,81,73,0.22);
 
-  --c-default: #2e7d45;
-  --c-default-bg: #f4f7f4;
-  --c-default-border: rgba(46,125,69,0.14);
+  --gold: #d4a847;
 }
 
 * { margin:0; padding:0; box-sizing:border-box; }
 body { background:var(--bg); color:var(--text); font-family:'Noto Sans TC',sans-serif; font-size:15px; line-height:1.6; min-height:100vh; }
 
-/* ── loading / error ── */
-#loading-screen { position:fixed; inset:0; background:var(--bg); display:flex; flex-direction:column; align-items:center; justify-content:center; gap:16px; z-index:999; }
-.spinner { width:32px; height:32px; border:2px solid var(--border); border-top-color:var(--sendai); border-radius:50%; animation:spin 0.8s linear infinite; }
-@keyframes spin { to { transform:rotate(360deg); } }
-#loading-screen p { font-size:13px; color:var(--text2); }
-#error-screen { display:none; position:fixed; inset:0; background:var(--bg); flex-direction:column; align-items:center; justify-content:center; gap:12px; z-index:999; padding:2rem; }
-#error-screen p { font-size:14px; color:var(--text2); text-align:center; line-height:1.8; white-space:pre-line; }
-#error-screen button { background:var(--bg3); border:1px solid var(--border); border-radius:8px; color:var(--text); padding:8px 20px; font-size:13px; cursor:pointer; font-family:'Noto Sans TC',sans-serif; }
-
 /* ── header ── */
 header { background:var(--bg2); border-bottom:1px solid var(--border); padding:1.6rem 1.25rem 1.2rem; text-align:center; }
-.header-label { font-size:11px; letter-spacing:0.18em; color:var(--sendai); text-transform:uppercase; margin-bottom:0.4rem; }
+.header-label { font-size:11px; letter-spacing:0.2em; color:var(--blue); text-transform:uppercase; margin-bottom:0.35rem; }
 header h1 { font-family:'Noto Serif TC',serif; font-size:1.65rem; font-weight:600; color:var(--text); line-height:1.3; }
-.header-sub { margin-top:0.3rem; font-size:13px; color:var(--text2); }
-.header-badges { display:flex; justify-content:center; gap:7px; flex-wrap:wrap; margin-top:0.85rem; }
+.header-sub { font-size:13px; color:var(--text2); margin-top:0.25rem; }
+.badges { display:flex; justify-content:center; gap:7px; flex-wrap:wrap; margin-top:0.85rem; }
 .badge { display:inline-flex; align-items:center; gap:5px; border-radius:20px; padding:3px 11px; font-size:11px; }
-.badge-race  { background:var(--c-race-bg);  border:1px solid var(--c-race-border);  color:var(--c-race); }
-.badge-pax   { background:var(--c-flight-bg); border:1px solid var(--c-flight-border); color:var(--c-flight); }
-.badge-sync  { background:var(--bg3); border:1px solid var(--border); color:var(--sendai); cursor:pointer; transition:opacity 0.2s; }
-.badge-sync:hover { opacity:0.75; }
-.dot { width:5px; height:5px; border-radius:50%; background:currentColor; }
+.badge-gold   { background:rgba(212,168,71,0.12); border:1px solid rgba(212,168,71,0.3); color:var(--gold); }
+.badge-blue   { background:var(--blue-dim);   border:1px solid var(--blue-border);   color:var(--blue); }
+.badge-green  { background:var(--green-dim);  border:1px solid var(--green-border);  color:var(--green); }
+.dot { width:5px; height:5px; border-radius:50%; background:currentColor; flex-shrink:0; }
 
-/* ── day tabs nav ── */
-.days-nav { display:flex; overflow-x:auto; background:var(--bg2); border-bottom:1px solid var(--border); padding:0 0.5rem; scrollbar-width:none; position:sticky; top:0; z-index:50; box-shadow:0 1px 4px rgba(0,0,0,0.06); }
+/* ── tabs ── */
+.days-nav { display:flex; overflow-x:auto; background:var(--bg2); border-bottom:1px solid var(--border); padding:0 0.5rem; scrollbar-width:none; position:sticky; top:0; z-index:50; }
 .days-nav::-webkit-scrollbar { display:none; }
 .day-tab { flex-shrink:0; padding:0.6rem 0.9rem; font-size:12px; color:var(--text2); cursor:pointer; border-bottom:2px solid transparent; transition:all 0.18s; white-space:nowrap; text-align:center; line-height:1.4; }
-.day-tab.active { color:var(--sendai); border-bottom-color:var(--sendai); font-weight:500; }
+.day-tab.active { color:var(--blue); border-bottom-color:var(--blue); font-weight:500; }
+.day-tab.race-tab.active { color:var(--green); border-bottom-color:var(--green); }
 .day-tab:hover { color:var(--text); }
-.tab-date { font-size:10px; opacity:0.65; display:block; }
+.tab-sub { font-size:10px; opacity:0.6; display:block; }
 
-/* ── main content ── */
+/* ── main ── */
 main { padding:1rem 1rem 5.5rem; max-width:480px; margin:0 auto; }
 .day-section { display:none; }
 .day-section.active { display:block; }
 
 /* ── day header ── */
-.day-header { display:flex; align-items:center; gap:9px; margin:0.3rem 0 1rem; }
-.day-number { background:var(--sendai); color:#fff; font-size:10px; font-weight:700; letter-spacing:0.08em; padding:3px 9px; border-radius:4px; flex-shrink:0; }
-.day-number.race-day { background:var(--c-race); }
+.day-header { display:flex; align-items:center; gap:9px; margin:0.3rem 0 1.1rem; }
+.day-badge { font-size:10px; font-weight:700; letter-spacing:0.08em; padding:3px 9px; border-radius:4px; flex-shrink:0; }
+.day-badge.normal    { background:var(--blue-dim);  color:var(--blue);  border:1px solid var(--blue-border); }
+.day-badge.race-day  { background:var(--green-dim); color:var(--green); border:1px solid var(--green-border); }
 .day-title { font-size:14px; font-weight:500; color:var(--text); flex:1; }
+.theme-tag { font-size:10px; color:var(--text3); padding:2px 7px; border-radius:8px; background:var(--bg4); border:1px solid var(--border); flex-shrink:0; }
 
-/* ── timeline ── */
+/* ── timeline ──
+   Layout: time label sits at top of the column (padding-top 0.6rem),
+   the line runs full height behind everything,
+   the dot is positioned BELOW the time label (top: 2.2rem) so they never overlap. */
 .event-list { display:flex; flex-direction:column; }
-.event-item { display:flex; }
-.timeline-col { width:54px; flex-shrink:0; display:flex; flex-direction:column; align-items:center; position:relative; }
-.time-label { font-size:10px; color:var(--text2); padding-top:0.6rem; line-height:1.2; text-align:center; z-index:2; width:100%; letter-spacing:0.01em; }
-.timeline-line { position:absolute; top:0; bottom:0; left:50%; transform:translateX(-50%); width:1px; background:var(--border); }
-.timeline-dot { position:absolute; top:2.3rem; left:50%; transform:translateX(-50%); width:9px; height:9px; border-radius:50%; z-index:1; }
+.event-item { display:flex; min-height:3.8rem; }
 
-/* dot colours per type */
-.timeline-dot.flight { background:var(--c-flight-bg); border:2px solid var(--c-flight); }
-.timeline-dot.race   { background:var(--c-race-bg);   border:2px solid var(--c-race); }
-.timeline-dot.food   { background:var(--c-food-bg);   border:2px solid var(--c-food); }
-.timeline-dot.hotel  { background:var(--c-hotel-bg);  border:2px solid var(--c-hotel); }
-.timeline-dot.car    { background:var(--c-car-bg);    border:2px solid var(--c-car); }
-.timeline-dot.default { background:var(--c-default-bg); border:2px solid var(--c-default); }
+.tl-col { width:56px; flex-shrink:0; position:relative; display:flex; flex-direction:column; align-items:center; }
+.tl-line { position:absolute; top:0; bottom:0; left:50%; transform:translateX(-50%); width:1px; background:var(--border); }
+.tl-time { position:relative; z-index:2; font-size:10px; color:var(--text3); padding-top:0.6rem; line-height:1.2; text-align:center; width:100%; }
+.tl-dot { position:absolute; top:2.2rem; left:50%; transform:translateX(-50%); width:9px; height:9px; border-radius:50%; z-index:1; }
 
-/* ── event cards ── */
-.event-card { flex:1; border-radius:10px; padding:0.7rem 0.9rem 0.75rem; margin:0.4rem 0 0.4rem 8px; position:relative; overflow:hidden; min-height:3rem; border-left-width:3px; border-left-style:solid; }
+/* dot colours */
+.tl-dot.flight  { background:var(--blue-dim);   border:2px solid var(--blue); }
+.tl-dot.race    { background:var(--green-dim);  border:2px solid var(--green); }
+.tl-dot.food    { background:var(--orange-dim); border:2px solid var(--orange); }
+.tl-dot.hotel   { background:var(--purple-dim); border:2px solid var(--purple); }
+.tl-dot.car     { background:var(--red-dim);    border:2px solid var(--red); }
+.tl-dot.default { background:var(--bg4);        border:2px solid var(--text3); }
 
-.event-card.flight { background:var(--c-flight-bg); border-color:var(--c-flight); border-top:1px solid var(--c-flight-border); border-right:1px solid var(--c-flight-border); border-bottom:1px solid var(--c-flight-border); }
-.event-card.race   { background:var(--c-race-bg);   border-color:var(--c-race);   border-top:1px solid var(--c-race-border);   border-right:1px solid var(--c-race-border);   border-bottom:1px solid var(--c-race-border); }
-.event-card.food   { background:var(--c-food-bg);   border-color:var(--c-food);   border-top:1px solid var(--c-food-border);   border-right:1px solid var(--c-food-border);   border-bottom:1px solid var(--c-food-border); }
-.event-card.hotel  { background:var(--c-hotel-bg);  border-color:var(--c-hotel);  border-top:1px solid var(--c-hotel-border);  border-right:1px solid var(--c-hotel-border);  border-bottom:1px solid var(--c-hotel-border); }
-.event-card.car    { background:var(--c-car-bg);    border-color:var(--c-car);    border-top:1px solid var(--c-car-border);    border-right:1px solid var(--c-car-border);    border-bottom:1px solid var(--c-car-border); }
-.event-card.default{ background:var(--bg2);         border-color:var(--sendai);   border-top:1px solid var(--border);          border-right:1px solid var(--border);          border-bottom:1px solid var(--border); }
+/* ── cards ── */
+.event-card { flex:1; border-radius:10px; padding:0.7rem 0.95rem 0.8rem; margin:0.4rem 0 0.4rem 8px; position:relative; overflow:hidden; border-left-width:3px; border-left-style:solid; }
 
-.event-type  { font-size:10px; letter-spacing:0.09em; text-transform:uppercase; margin-bottom:2px; font-weight:500; }
-.event-card.flight .event-type { color:var(--c-flight); }
-.event-card.race   .event-type { color:var(--c-race); }
-.event-card.food   .event-type { color:var(--c-food); }
-.event-card.hotel  .event-type { color:var(--c-hotel); }
-.event-card.car    .event-type { color:var(--c-car); }
-.event-card.default .event-type { color:var(--sendai); }
+.event-card.flight { background:var(--blue-dim);   border-color:var(--blue);   border-top:1px solid var(--blue-border);   border-right:1px solid var(--blue-border);   border-bottom:1px solid var(--blue-border); }
+.event-card.race   { background:var(--green-dim);  border-color:var(--green);  border-top:1px solid var(--green-border);  border-right:1px solid var(--green-border);  border-bottom:1px solid var(--green-border); }
+.event-card.food   { background:var(--orange-dim); border-color:var(--orange); border-top:1px solid var(--orange-border); border-right:1px solid var(--orange-border); border-bottom:1px solid var(--orange-border); }
+.event-card.hotel  { background:var(--purple-dim); border-color:var(--purple); border-top:1px solid var(--purple-border); border-right:1px solid var(--purple-border); border-bottom:1px solid var(--purple-border); }
+.event-card.car    { background:var(--red-dim);    border-color:var(--red);    border-top:1px solid var(--red-border);    border-right:1px solid var(--red-border);    border-bottom:1px solid var(--red-border); }
+.event-card.default{ background:var(--bg3);        border-color:var(--text3);  border-top:1px solid var(--border);        border-right:1px solid var(--border);        border-bottom:1px solid var(--border); }
 
-.event-title  { font-size:14px; font-weight:500; color:var(--text); line-height:1.4; }
-.event-hint   { font-size:12px; color:var(--text2); margin-top:4px; line-height:1.55; }
-.event-alert  { display:inline-block; font-size:10px; margin-top:5px; padding:2px 8px; border-radius:10px; }
-.alert-warn   { background:rgba(230,81,0,0.1); color:var(--c-food); border:1px solid rgba(230,81,0,0.25); }
-.alert-info   { background:var(--c-race-bg); color:var(--c-race); border:1px solid var(--c-race-border); }
-.alert-race   { background:var(--c-race-bg); color:var(--c-race); border:1px solid var(--c-race-border); font-weight:500; }
+.ev-type  { font-size:10px; letter-spacing:0.09em; text-transform:uppercase; font-weight:500; margin-bottom:2px; }
+.event-card.flight .ev-type { color:var(--blue); }
+.event-card.race   .ev-type { color:var(--green); }
+.event-card.food   .ev-type { color:var(--orange); }
+.event-card.hotel  .ev-type { color:var(--purple); }
+.event-card.car    .ev-type { color:var(--red); }
+.event-card.default .ev-type { color:var(--text2); }
+
+.ev-title { font-size:14px; font-weight:500; color:var(--text); line-height:1.4; }
+.ev-hint  { font-size:12px; color:var(--text2); margin-top:4px; line-height:1.55; }
+
+.ev-tag { display:inline-block; font-size:10px; padding:2px 8px; border-radius:10px; margin-top:5px; margin-right:4px; }
+.tag-warn  { background:rgba(210,153,34,0.15); color:var(--orange); border:1px solid var(--orange-border); }
+.tag-info  { background:var(--blue-dim);  color:var(--blue);  border:1px solid var(--blue-border); }
+.tag-race  { background:var(--green-dim); color:var(--green); border:1px solid var(--green-border); font-weight:500; }
+.tag-note  { background:var(--bg4); color:var(--text2); border:1px solid var(--border2); }
 
 /* ── people pills ── */
-.people-row { display:flex; flex-wrap:wrap; gap:4px; margin-top:7px; }
-.person { font-size:10px; padding:2px 8px; border-radius:10px; background:rgba(255,255,255,0.7); color:var(--text2); border:1px solid rgba(0,0,0,0.1); }
-.event-card.flight .person { background:rgba(255,255,255,0.8); color:var(--c-flight); border-color:rgba(21,101,192,0.2); }
-.event-card.race   .person { background:rgba(255,255,255,0.8); color:var(--c-race);   border-color:rgba(46,125,69,0.25); }
-.person.michael    { font-weight:500; border-width:1.5px; }
-.event-card.flight .person.michael { border-color:var(--c-flight); }
-.event-card.race   .person.michael { border-color:var(--c-race); }
+.people { display:flex; flex-wrap:wrap; gap:4px; margin-top:7px; }
+.person { font-size:10px; padding:2px 8px; border-radius:10px; }
+.event-card.flight .person { background:rgba(56,139,253,0.15); color:var(--blue);   border:1px solid var(--blue-border); }
+.event-card.race   .person { background:rgba(63,185,80,0.15);  color:var(--green);  border:1px solid var(--green-border); }
+.event-card.food   .person { background:rgba(210,153,34,0.15); color:var(--orange); border:1px solid var(--orange-border); }
+.event-card.hotel  .person { background:rgba(163,113,247,0.15);color:var(--purple); border:1px solid var(--purple-border); }
+.event-card.car    .person { background:rgba(248,81,73,0.15);  color:var(--red);    border:1px solid var(--red-border); }
+.event-card.default .person{ background:var(--bg4); color:var(--text2); border:1px solid var(--border2); }
+.person.michael { font-weight:500; border-width:1.5px !important; }
+.event-card.flight .person.michael { border-color:var(--blue) !important; }
+.event-card.race   .person.michael { border-color:var(--green) !important; }
+.event-card.hotel  .person.michael { border-color:var(--purple) !important; }
 
-/* ── footer nav ── */
-footer { position:fixed; bottom:0; left:0; right:0; background:var(--bg2); border-top:1px solid var(--border); padding:0.5rem 0.6rem; display:flex; justify-content:center; gap:5px; z-index:100; box-shadow:0 -1px 6px rgba(0,0,0,0.06); }
-.footer-btn { flex:1; max-width:90px; background:transparent; border:1px solid var(--border); border-radius:8px; color:var(--text2); font-size:10px; padding:5px 2px; cursor:pointer; font-family:'Noto Sans TC',sans-serif; transition:all 0.15s; line-height:1.4; text-align:center; }
-.footer-btn:hover  { background:var(--sendai-pale); color:var(--sendai); border-color:var(--sendai); }
-.footer-btn.active { background:var(--sendai-pale); color:var(--sendai); border-color:var(--sendai); font-weight:500; }
-.footer-btn.race-btn.active { background:var(--c-race-bg); color:var(--c-race); border-color:var(--c-race); }
+/* ── footer ── */
+footer { position:fixed; bottom:0; left:0; right:0; background:var(--bg2); border-top:1px solid var(--border); padding:0.5rem 0.6rem; display:flex; gap:5px; z-index:100; }
+.ft-btn { flex:1; background:transparent; border:1px solid var(--border); border-radius:8px; color:var(--text2); font-size:10px; padding:5px 2px; cursor:pointer; font-family:'Noto Sans TC',sans-serif; transition:all 0.15s; line-height:1.4; text-align:center; }
+.ft-btn:hover { background:var(--bg3); color:var(--text); border-color:var(--border2); }
+.ft-btn.active { background:var(--blue-dim); color:var(--blue); border-color:var(--blue-border); font-weight:500; }
+.ft-btn.race-btn.active { background:var(--green-dim); color:var(--green); border-color:var(--green-border); }
 </style>
 </head>
 <body>
 
-<div id="loading-screen">
-  <div class="spinner"></div>
-  <p>載入最新行程⋯</p>
-</div>
-<div id="error-screen">
-  <p id="error-msg"></p>
-  <button onclick="location.reload()">重新載入</button>
-</div>
-
 <header>
   <div class="header-label">Trip Itinerary</div>
   <h1>仙台半程馬拉松</h1>
-  <div class="header-sub">2026 年 5 月 7 日 – 13 日　7 人同行</div>
-  <div class="header-badges">
-    <div class="badge badge-race"><div class="dot"></div>21.0975 km · 仙台市</div>
-    <div class="badge badge-pax"><div class="dot"></div>7 人同行</div>
-    <div class="badge badge-sync" id="sync-badge" onclick="fetchAndRender()">
-      <div class="dot"></div><span id="sync-label">即時同步 Sheets</span>
-    </div>
+  <div class="header-sub">2026 年 5 月 7 日 – 13 日</div>
+  <div class="badges">
+    <div class="badge badge-gold"><div class="dot"></div>21.0975 km · 仙台市</div>
+    <div class="badge badge-blue"><div class="dot"></div>7 人同行</div>
+    <div class="badge badge-green"><div class="dot"></div>5/10 Sun · Race Day</div>
   </div>
 </header>
 
-<div class="days-nav" id="days-nav"></div>
-<main id="main-content"></main>
-<footer id="footer-nav"></footer>
+<!-- tabs -->
+<div class="days-nav">
+  <div class="day-tab active"   onclick="go(0)">5/7<span class="tab-sub">Thu · 出發</span></div>
+  <div class="day-tab"          onclick="go(1)">5/8<span class="tab-sub">Fri · 仙台</span></div>
+  <div class="day-tab"          onclick="go(2)">5/9<span class="tab-sub">Sat · 松島</span></div>
+  <div class="day-tab race-tab" onclick="go(3)">5/10<span class="tab-sub">Sun · 比賽</span></div>
+  <div class="day-tab"          onclick="go(4)">5/11<span class="tab-sub">Mon · 品酒</span></div>
+  <div class="day-tab"          onclick="go(5)">5/12<span class="tab-sub">Tue · 溫泉</span></div>
+  <div class="day-tab"          onclick="go(6)">5/13<span class="tab-sub">Wed · 返台</span></div>
+</div>
+
+<main>
+
+<!-- ══════════════════════════════════════════
+     DAY 1 · 5/7 Thu · 出發
+══════════════════════════════════════════ -->
+<div class="day-section active" id="d0">
+  <div class="day-header">
+    <span class="day-badge normal">DAY 1</span>
+    <span class="day-title">出發・飛往仙台</span>
+    <span class="theme-tag">出發</span>
+  </div>
+  <div class="event-list">
+
+    <div class="event-item">
+      <div class="tl-col"><div class="tl-line"></div><div class="tl-dot flight"></div><div class="tl-time">10:05</div></div>
+      <div class="event-card flight">
+        <div class="ev-type">去程航班 · BR 118</div>
+        <div class="ev-title">Depart TPE → SDJ</div>
+        <div class="people"><span class="person">Jason</span><span class="person">Penny</span><span class="person">Alina</span><span class="person">Gary</span></div>
+        <div class="ev-hint">出發前確認護照、報名確認信、跑鞋都已打包</div>
+      </div>
+    </div>
+
+    <div class="event-item">
+      <div class="tl-col"><div class="tl-line"></div><div class="tl-dot flight"></div><div class="tl-time">11:35</div></div>
+      <div class="event-card flight">
+        <div class="ev-type">去程航班 · JX 862</div>
+        <div class="ev-title">Depart TPE → SDJ</div>
+        <div class="people"><span class="person michael">Michael</span><span class="person">Leslie</span></div>
+      </div>
+    </div>
+
+    <div class="event-item">
+      <div class="tl-col"><div class="tl-line"></div><div class="tl-dot food"></div><div class="tl-time">機上</div></div>
+      <div class="event-card food">
+        <div class="ev-type">餐飲</div>
+        <div class="ev-title">On flight</div>
+      </div>
+    </div>
+
+    <div class="event-item">
+      <div class="tl-col"><div class="tl-line"></div><div class="tl-dot flight"></div><div class="tl-time">14:35</div></div>
+      <div class="event-card flight">
+        <div class="ev-type">抵達仙台 SDJ · BR 118</div>
+        <div class="ev-title">Arrive Sendai</div>
+        <div class="people"><span class="person">Jason</span><span class="person">Penny</span><span class="person">Alina</span><span class="person">Gary</span></div>
+        <div class="ev-hint">入境後搭乘電車或巴士前往仙台市區約 30–45 分鐘</div>
+      </div>
+    </div>
+
+    <div class="event-item">
+      <div class="tl-col"><div class="tl-line"></div><div class="tl-dot flight"></div><div class="tl-time">16:00</div></div>
+      <div class="event-card flight">
+        <div class="ev-type">抵達仙台 SDJ · JX 862</div>
+        <div class="ev-title">Arrive Sendai</div>
+        <div class="people"><span class="person michael">Michael</span><span class="person">Leslie</span></div>
+      </div>
+    </div>
+
+    <div class="event-item">
+      <div class="tl-col"><div class="tl-line"></div><div class="tl-dot hotel"></div><div class="tl-time">下午</div></div>
+      <div class="event-card hotel">
+        <div class="ev-type">住宿 · Check-in</div>
+        <div class="ev-title">Hotel Grand Bach Sendai</div>
+        <div class="people"><span class="person michael">Michael</span><span class="person">Leslie</span><span class="person">Mikey</span><span class="person">Gary</span><span class="person">Jason</span><span class="person">Penny</span><span class="person">Alina</span></div>
+        <div class="ev-hint">仙台市中心，交通便利</div>
+      </div>
+    </div>
+
+    <div class="event-item">
+      <div class="tl-col"><div class="tl-line"></div><div class="tl-dot food"></div><div class="tl-time">晚餐</div></div>
+      <div class="event-card food">
+        <div class="ev-type">晚餐</div>
+        <div class="ev-title">牛舌燒肉餐廳（TBD）</div>
+        <div class="ev-hint">仙台名物！建議第一晚就吃，犒賞長途飛行</div>
+        <span class="ev-tag tag-note">比賽 -3 天</span>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     DAY 2 · 5/8 Fri · 仙台
+══════════════════════════════════════════ -->
+<div class="day-section" id="d1">
+  <div class="day-header">
+    <span class="day-badge normal">DAY 2</span>
+    <span class="day-title">仙台市區</span>
+    <span class="theme-tag">仙台</span>
+  </div>
+  <div class="event-list">
+
+    <div class="event-item">
+      <div class="tl-col"><div class="tl-line"></div><div class="tl-dot default"></div><div class="tl-time">上午</div></div>
+      <div class="event-card default">
+        <div class="ev-type">晨間活動</div>
+        <div class="ev-title">市區晨跑 30 min</div>
+        <div class="ev-hint">輕鬆配速，感受仙台街道，賽前保存體力</div>
+        <span class="ev-tag tag-note">比賽 -2 天</span>
+      </div>
+    </div>
+
+    <div class="event-item">
+      <div class="tl-col"><div class="tl-line"></div><div class="tl-dot default"></div><div class="tl-time">下午</div></div>
+      <div class="event-card default">
+        <div class="ev-type">觀光</div>
+        <div class="ev-title">仙台市區導覽</div>
+        <div class="ev-hint">青葉城跡、定禪寺通、榴岡公園等，步伐輕鬆</div>
+      </div>
+    </div>
+
+    <div class="event-item">
+      <div class="tl-col"><div class="tl-line"></div><div class="tl-dot race"></div><div class="tl-time">下午</div></div>
+      <div class="event-card race">
+        <div class="ev-type">選手服務</div>
+        <div class="ev-title">馬拉松 Check-in・領號碼布</div>
+        <div class="ev-hint">仙台半馬 EXPO 會場</div>
+        <span class="ev-tag tag-warn">勿忘攜帶報名確認信</span>
+      </div>
+    </div>
+
+    <div class="event-item">
+      <div class="tl-col"><div class="tl-line"></div><div class="tl-dot default"></div><div class="tl-time">下午</div></div>
+      <div class="event-card default">
+        <div class="ev-type">購物</div>
+        <div class="ev-title">Ishi Sports · Yodobashi Sendai</div>
+        <div class="ev-hint">補充跑步裝備或買伴手禮的好去處</div>
+      </div>
+    </div>
+
+    <div class="event-item">
+      <div class="tl-col"><div class="tl-line"></div><div class="tl-dot hotel"></div><div class="tl-time">住宿</div></div>
+      <div class="event-card hotel">
+        <div class="ev-type">住宿</div>
+        <div class="ev-title">Hotel Grand Bach Sendai</div>
+        <div class="people"><span class="person michael">Michael</span><span class="person">Leslie</span><span class="person">Mikey</span><span class="person">Gary</span><span class="person">Jason</span><span class="person">Penny</span><span class="person">Alina</span></div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     DAY 3 · 5/9 Sat · 松島
+══════════════════════════════════════════ -->
+<div class="day-section" id="d2">
+  <div class="day-header">
+    <span class="day-badge normal">DAY 3</span>
+    <span class="day-title">宮城松島一日遊</span>
+    <span class="theme-tag">松島</span>
+  </div>
+  <div class="event-list">
+
+    <div class="event-item">
+      <div class="tl-col"><div class="tl-line"></div><div class="tl-dot default"></div><div class="tl-time">全天</div></div>
+      <div class="event-card default">
+        <div class="ev-type">觀光</div>
+        <div class="ev-title">宮城松島・日本三景</div>
+        <div class="ev-hint">海灣小島散步與遊船體驗，景色絕美。賽前 -1 天，以輕鬆步伐為主</div>
+        <span class="ev-tag tag-note">比賽 -1 天</span>
+      </div>
+    </div>
+
+    <div class="event-item">
+      <div class="tl-col"><div class="tl-line"></div><div class="tl-dot food"></div><div class="tl-time">晚餐</div></div>
+      <div class="event-card food">
+        <div class="ev-type">選手之夜 · Carbo Loading</div>
+        <div class="ev-title">賽前碳水補給晚餐（TBD）</div>
+        <div class="ev-hint">以白飯、烏龍麵、義大利麵等高碳水為主，避免高脂肪與高纖維食物</div>
+        <span class="ev-tag tag-race">明天是比賽日！</span>
+      </div>
+    </div>
+
+    <div class="event-item">
+      <div class="tl-col"><div class="tl-line"></div><div class="tl-dot hotel"></div><div class="tl-time">住宿</div></div>
+      <div class="event-card hotel">
+        <div class="ev-type">住宿</div>
+        <div class="ev-title">Hotel Grand Bach Sendai</div>
+        <div class="people"><span class="person michael">Michael</span><span class="person">Leslie</span><span class="person">Mikey</span><span class="person">Gary</span><span class="person">Jason</span><span class="person">Penny</span><span class="person">Alina</span></div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     DAY 4 · 5/10 Sun · RACE DAY
+══════════════════════════════════════════ -->
+<div class="day-section" id="d3">
+  <div class="day-header">
+    <span class="day-badge race-day">RACE DAY</span>
+    <span class="day-title" style="color:var(--green)">仙台半程馬拉松</span>
+    <span class="theme-tag">比賽</span>
+  </div>
+  <div class="event-list">
+
+    <div class="event-item">
+      <div class="tl-col"><div class="tl-line"></div><div class="tl-dot race"></div><div class="tl-time">清晨</div></div>
+      <div class="event-card race">
+        <div class="ev-type">賽前準備</div>
+        <div class="ev-title">起床・早餐・出發</div>
+        <div class="ev-hint">起跑前 2–3 小時用餐，香蕉、吐司、運動飲料為主</div>
+        <span class="ev-tag tag-warn">提早 45 分鐘抵達起跑區</span>
+      </div>
+    </div>
+
+    <div class="event-item">
+      <div class="tl-col"><div class="tl-line"></div><div class="tl-dot race"></div><div class="tl-time">10:05</div></div>
+      <div class="event-card race">
+        <div class="ev-type">仙台半程馬拉松</div>
+        <div class="ev-title">First Wave — 起跑！</div>
+        <div class="ev-hint">21.0975 km，全力以赴——仙台的風景陪著你跑完每一公里</div>
+        <span class="ev-tag tag-race">21.0975 km</span>
+      </div>
+    </div>
+
+    <div class="event-item">
+      <div class="tl-col"><div class="tl-line"></div><div class="tl-dot race"></div><div class="tl-time">10:15</div></div>
+      <div class="event-card race">
+        <div class="ev-type">仙台半程馬拉松</div>
+        <div class="ev-title">Second Wave — 起跑！</div>
+      </div>
+    </div>
+
+    <div class="event-item">
+      <div class="tl-col"><div class="tl-line"></div><div class="tl-dot food"></div><div class="tl-time">中午後</div></div>
+      <div class="event-card food">
+        <div class="ev-type">完賽慶功宴</div>
+        <div class="ev-title">慶功宴（TBD）</div>
+        <div class="ev-hint">你跑完了，盡情享用！</div>
+        <span class="ev-tag tag-info">完賽獎牌合照必拍</span>
+      </div>
+    </div>
+
+    <div class="event-item">
+      <div class="tl-col"><div class="tl-line"></div><div class="tl-dot hotel"></div><div class="tl-time">住宿</div></div>
+      <div class="event-card hotel">
+        <div class="ev-type">住宿</div>
+        <div class="ev-title">Hotel Grand Bach Sendai</div>
+        <div class="people"><span class="person michael">Michael</span><span class="person">Leslie</span><span class="person">Mikey</span><span class="person">Gary</span><span class="person">Jason</span><span class="person">Penny</span><span class="person">Alina</span></div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     DAY 5 · 5/11 Mon · 品酒
+══════════════════════════════════════════ -->
+<div class="day-section" id="d4">
+  <div class="day-header">
+    <span class="day-badge normal">DAY 5</span>
+    <span class="day-title">威士忌・分流</span>
+    <span class="theme-tag">品酒</span>
+  </div>
+  <div class="event-list">
+
+    <div class="event-item">
+      <div class="tl-col"><div class="tl-line"></div><div class="tl-dot car"></div><div class="tl-time">09:00</div></div>
+      <div class="event-card car">
+        <div class="ev-type">租車</div>
+        <div class="ev-title">Michael 取租車</div>
+        <div class="people"><span class="person michael">Michael</span></div>
+      </div>
+    </div>
+
+    <div class="event-item">
+      <div class="tl-col"><div class="tl-line"></div><div class="tl-dot default"></div><div class="tl-time">上午</div></div>
+      <div class="event-card default">
+        <div class="ev-type">威士忌巡禮</div>
+        <div class="ev-title">Nikka 仙台宮城峽蒸餾所</div>
+        <div class="people"><span class="person michael">Michael</span><span class="person">Leslie</span><span class="person">Mikey</span><span class="person">Gary</span></div>
+        <div class="ev-hint">日本威士忌聖地，建議事先預約導覽行程</div>
+        <span class="ev-tag tag-info">自費品飲體驗</span>
+      </div>
+    </div>
+
+    <div class="event-item">
+      <div class="tl-col"><div class="tl-line"></div><div class="tl-dot flight"></div><div class="tl-time">16:05</div></div>
+      <div class="event-card flight">
+        <div class="ev-type">回程航班 · BR 117</div>
+        <div class="ev-title">Depart SDJ → TPE</div>
+        <div class="people"><span class="person">Jason</span><span class="person">Penny</span><span class="person">Alina</span></div>
+        <div class="ev-hint">部分成員先行返台</div>
+      </div>
+    </div>
+
+    <div class="event-item">
+      <div class="tl-col"><div class="tl-line"></div><div class="tl-dot hotel"></div><div class="tl-time">住宿</div></div>
+      <div class="event-card hotel">
+        <div class="ev-type">住宿 · 作並溫泉</div>
+        <div class="ev-title">Yudukushi Salon 一之坊</div>
+        <div class="people"><span class="person michael">Michael</span><span class="person">Leslie</span><span class="person">Mikey</span><span class="person">Gary</span></div>
+        <div class="ev-hint">作並溫泉，賽後泡湯最療癒。入住後好好放鬆雙腿</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     DAY 6 · 5/12 Tue · 溫泉
+══════════════════════════════════════════ -->
+<div class="day-section" id="d5">
+  <div class="day-header">
+    <span class="day-badge normal">DAY 6</span>
+    <span class="day-title">溫泉・Mikey 返台</span>
+    <span class="theme-tag">溫泉</span>
+  </div>
+  <div class="event-list">
+
+    <div class="event-item">
+      <div class="tl-col"><div class="tl-line"></div><div class="tl-dot flight"></div><div class="tl-time">17:20</div></div>
+      <div class="event-card flight">
+        <div class="ev-type">回程航班 · JX 863</div>
+        <div class="ev-title">Depart SDJ → TPE</div>
+        <div class="people"><span class="person">Mikey</span></div>
+      </div>
+    </div>
+
+    <div class="event-item">
+      <div class="tl-col"><div class="tl-line"></div><div class="tl-dot hotel"></div><div class="tl-time">住宿</div></div>
+      <div class="event-card hotel">
+        <div class="ev-type">住宿</div>
+        <div class="ev-title">Hotel Metropolitan Sendai East</div>
+        <div class="people"><span class="person michael">Michael</span><span class="person">Leslie</span></div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     DAY 7 · 5/13 Wed · 返台
+══════════════════════════════════════════ -->
+<div class="day-section" id="d6">
+  <div class="day-header">
+    <span class="day-badge normal">DAY 7</span>
+    <span class="day-title">返台</span>
+    <span class="theme-tag">返台</span>
+  </div>
+  <div class="event-list">
+
+    <div class="event-item">
+      <div class="tl-col"><div class="tl-line"></div><div class="tl-dot car"></div><div class="tl-time">09:00</div></div>
+      <div class="event-card car">
+        <div class="ev-type">租車</div>
+        <div class="ev-title">Michael 還租車</div>
+        <div class="people"><span class="person michael">Michael</span></div>
+      </div>
+    </div>
+
+    <div class="event-item">
+      <div class="tl-col"><div class="tl-line"></div><div class="tl-dot flight"></div><div class="tl-time">17:20</div></div>
+      <div class="event-card flight">
+        <div class="ev-type">回程航班 · JX 863</div>
+        <div class="ev-title">Depart SDJ → TPE</div>
+        <div class="people"><span class="person michael">Michael</span><span class="person">Leslie</span></div>
+      </div>
+    </div>
+
+    <div class="event-item">
+      <div class="tl-col"><div class="tl-line"></div><div class="tl-dot flight"></div><div class="tl-time">20:10</div></div>
+      <div class="event-card flight">
+        <div class="ev-type">抵達桃園</div>
+        <div class="ev-title">Arrive TPE · JX 863</div>
+        <div class="people"><span class="person michael">Michael</span><span class="person">Leslie</span></div>
+        <div class="ev-hint">帶著完賽獎牌與驕傲回家</div>
+        <span class="ev-tag tag-race">完賽！</span>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+</main>
+
+<!-- footer nav -->
+<footer>
+  <button class="ft-btn active"   onclick="go(0)">5/7<br>出發</button>
+  <button class="ft-btn"          onclick="go(1)">5/8<br>仙台</button>
+  <button class="ft-btn"          onclick="go(2)">5/9<br>松島</button>
+  <button class="ft-btn race-btn" onclick="go(3)">5/10<br>比賽</button>
+  <button class="ft-btn"          onclick="go(4)">5/11<br>品酒</button>
+  <button class="ft-btn"          onclick="go(5)">5/12<br>溫泉</button>
+  <button class="ft-btn"          onclick="go(6)">5/13<br>返台</button>
+</footer>
 
 <script>
-const API_URL = 'https://script.google.com/macros/s/AKfycbxQU_6-KqqU3wZN7P5uVJ1wCa67p_Z1dwLnRJyFwTTuQ9ktWFm7QDWY7rFanyy42KGj/exec';
-const MICHAEL_NAMES = ['Michael','michael','麥可'];
-const FOOTER_LABELS = ['出發','松島','報到','比賽','品酒','Day6','返台'];
-
-/* ── 說明文案字典 ─────────────────────────────────────────
-   格式：{ 關鍵字（小寫）: { hint:'說明', alert:'注意事項', alertType:'warn|info|race' } }
-   hint 顯示在卡片內容下方（灰色小字）
-   alert 顯示為彩色標籤                                    */
-const HINTS = {
-  '牛舌':      { hint:'仙台名物！建議第一晚就吃，犒賞長途飛行', alert:null },
-  '松島':      { hint:'日本三景之一，海灣小島與遊船。輕鬆步伐，賽前 -2 天，保存體力', alert:null },
-  'yodobashi': { hint:'補充跑步裝備、買伴手禮的好去處', alert:null },
-  'ishi sports':{ hint:'日本跑步專門店，可找賽場補給品', alert:null },
-  'check in':  { hint:'領取號碼布時記得攜帶報名確認信', alert:'勿忘報名確認信', alertType:'warn' },
-  '號碼布':    { hint:'領取號碼布時記得攜帶報名確認信', alert:'勿忘報名確認信', alertType:'warn' },
-  '選手之夜':  { hint:'與其他跑者交流的好機會', alert:null },
-  'carbo':     { hint:'以白飯、烏龍麵、義大利麵等高碳水為主，避免高脂肪與高纖維食物', alert:'明天是比賽日！', alertType:'race' },
-  'first wave':{ hint:'21.0975 km，全力以赴——仙台的風景陪著你跑完每一公里', alert:'提早 45 分鐘抵達起跑區', alertType:'warn' },
-  'second wave':{ hint:'21.0975 km，全力以赴——仙台的風景陪著你跑完每一公里', alert:'提早 45 分鐘抵達起跑區', alertType:'warn' },
-  '慶功':      { hint:'你跑完了，盡情享用！', alert:'完賽獎牌合照必拍', alertType:'info' },
-  'nikka':     { hint:'日本威士忌聖地，建議事先預約導覽行程', alert:'自費品飲體驗', alertType:'info' },
-  '宮城峽':    { hint:'日本威士忌聖地，建議事先預約導覽行程', alert:'自費品飲體驗', alertType:'info' },
-  '一之坊':    { hint:'作並溫泉，賽後泡湯最療癒。入住後記得好好放鬆雙腿', alert:null },
-  'bach':      { hint:'位於仙台市中心，交通便利', alert:null },
-  'depart tpe':{ hint:'出發前確認護照、報名確認信、跑鞋都已打包', alert:null },
-  'arrive sdj':{ hint:'入境後搭乘電車或巴士前往仙台市區約 30–45 分鐘', alert:null },
-};
-
-function getHint(text) {
-  const t = text.toLowerCase();
-  for (const [key, val] of Object.entries(HINTS)) {
-    if (t.includes(key)) return val;
-  }
-  return null;
+function go(i) {
+  document.querySelectorAll('.day-section').forEach((el,j) => el.classList.toggle('active', j===i));
+  document.querySelectorAll('.day-tab').forEach((el,j)     => el.classList.toggle('active', j===i));
+  document.querySelectorAll('.ft-btn').forEach((el,j)      => el.classList.toggle('active', j===i));
+  window.scrollTo({top:0, behavior:'smooth'});
 }
-
-/* ── type classification ── */
-function classify(text) {
-  const t = (text||'').toLowerCase();
-  if (/depart|arrive|br\d|jx\s?\d|起飛|落地|航班/.test(t)) return 'flight';
-  if (/race|first wave|second wave|馬拉松|號碼布|選手報到|check.?in.*expo/.test(t)) return 'race';
-  if (/hotel|check.?in|check.?out|住宿|飯店|旅館|一之坊|bach/.test(t)) return 'hotel';
-  if (/餐|lunch|dinner|breakfast|牛舌|carbo|慶功|on flight/.test(t)) return 'food';
-  if (/租車|還車|取車/.test(t)) return 'car';
-  return 'default';
-}
-
-const TYPE_LABELS = {
-  flight:'航班', race:'比賽 / 選手服務', food:'餐飲', hotel:'住宿', car:'租車', default:'行程'
-};
-
-function extractPeople(text) {
-  const matches = [...(text||'').matchAll(/\(([^)]+)\)/g)];
-  const people = [];
-  matches.forEach(m => m[1].split(',').forEach(p => { const n=p.trim(); if(n) people.push(n); }));
-  return people;
-}
-function stripPeople(text) { return (text||'').replace(/\s*\([^)]+\)/g,'').trim(); }
-function extractTime(text)  { const m=(text||'').match(/\b\d{1,2}:\d{2}\b/); return m?m[0]:''; }
-
-function buildCard(line) {
-  if (!line.trim()) return '';
-  const type    = classify(line);
-  const people  = extractPeople(line);
-  const time    = extractTime(line);
-  const title   = stripPeople(line);
-  const hint    = getHint(line);
-
-  const peopleHtml = people.length
-    ? `<div class="people-row">${people.map(p=>`<span class="person ${MICHAEL_NAMES.includes(p)?'michael':''}">${p}</span>`).join('')}</div>`
-    : '';
-
-  const hintHtml = hint?.hint
-    ? `<div class="event-hint">${hint.hint}</div>`
-    : '';
-
-  const alertHtml = hint?.alert
-    ? `<span class="event-alert alert-${hint.alertType||'info'}">${hint.alert}</span>`
-    : '';
-
-  return `
-    <div class="event-item">
-      <div class="timeline-col">
-        <div class="timeline-line"></div>
-        <div class="timeline-dot ${type}"></div>
-        <div class="time-label">${time}</div>
-      </div>
-      <div class="event-card ${type}">
-        <div class="event-type">${TYPE_LABELS[type]||''}</div>
-        <div class="event-title">${title}</div>
-        ${peopleHtml}
-        ${hintHtml}
-        ${alertHtml}
-      </div>
-    </div>`;
-}
-
-function buildSection(idx, date, weekday, cells) {
-  const combined = cells.join('\n').toLowerCase();
-  const isRace   = /first wave|second wave/.test(combined);
-  const numBadge = isRace
-    ? `<span class="day-number race-day">RACE DAY</span>`
-    : `<span class="day-number">DAY ${idx+1}</span>`;
-  const titleStyle = isRace ? ' style="color:var(--c-race)"' : '';
-
-  let events = '';
-  cells.forEach(cell => {
-    if (!cell.trim()) return;
-    cell.split('\n').forEach(line => { if(line.trim()) events += buildCard(line); });
-  });
-
-  return `
-    <div class="day-section${idx===0?' active':''}" id="day-${idx}">
-      <div class="day-header">
-        ${numBadge}
-        <span class="day-title"${titleStyle}>${date}　${weekday}</span>
-      </div>
-      <div class="event-list">${events}</div>
-    </div>`;
-}
-
-async function fetchAndRender() {
-  const lbl = document.getElementById('sync-label');
-  lbl.textContent = '同步中⋯';
-  try {
-    const resp = await fetch(API_URL);
-    if (!resp.ok) throw new Error('HTTP ' + resp.status);
-    const rows = await resp.json();
-
-    const dates    = (rows[1]||[]).slice(1).filter(d => String(d).trim());
-    const weekdays = (rows[2]||[]).slice(1);
-    const dataRows = rows.slice(3);
-    const numDays  = dates.length;
-
-    let tabsHtml = '', footerHtml = '', mainHtml = '';
-    for (let i = 0; i < numDays; i++) {
-      const isRaceDay = (weekdays[i]||'').toLowerCase() === 'sun';
-      tabsHtml   += `<div class="day-tab${i===0?' active':''}" onclick="switchDay(${i})">${dates[i]}<span class="tab-date">${weekdays[i]||''}</span></div>`;
-      footerHtml += `<button class="footer-btn${isRaceDay?' race-btn':''}${i===0?' active':''}" onclick="switchDay(${i})">${dates[i]}<br>${FOOTER_LABELS[i]||''}</button>`;
-      const cells = dataRows.map(r => String(r[i+1]||'').trim());
-      mainHtml   += buildSection(i, dates[i], weekdays[i]||'', cells);
-    }
-
-    document.getElementById('days-nav').innerHTML      = tabsHtml;
-    document.getElementById('footer-nav').innerHTML    = footerHtml;
-    document.getElementById('main-content').innerHTML  = mainHtml;
-    document.getElementById('loading-screen').style.display = 'none';
-    lbl.textContent = '已同步 ✓';
-    setTimeout(() => { lbl.textContent = '即時同步 Sheets'; }, 2500);
-
-  } catch(e) {
-    document.getElementById('loading-screen').style.display = 'none';
-    const es = document.getElementById('error-screen');
-    es.style.display = 'flex';
-    document.getElementById('error-msg').textContent = '無法取得行程資料，請確認網路連線後重試。\n\n(' + e.message + ')';
-  }
-}
-
-function switchDay(idx) {
-  document.querySelectorAll('.day-section').forEach((el,i)=>el.classList.toggle('active',i===idx));
-  document.querySelectorAll('.day-tab').forEach((el,i)=>el.classList.toggle('active',i===idx));
-  document.querySelectorAll('.footer-btn').forEach((el,i)=>el.classList.toggle('active',i===idx));
-  window.scrollTo({top:0,behavior:'smooth'});
-}
-
-fetchAndRender();
 </script>
 </body>
 </html>
