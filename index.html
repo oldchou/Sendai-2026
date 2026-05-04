@@ -31,25 +31,24 @@
   --red:        #b02020;
   --red-dim:    rgba(176,32,32,0.08);
   --red-border: rgba(176,32,32,0.2);
-  --gold: #1a5c30;
 }
 * { margin:0; padding:0; box-sizing:border-box; }
 body { background:var(--bg); color:var(--text); font-family:'Noto Sans TC',sans-serif; font-size:15px; line-height:1.6; min-height:100vh; }
 
-/* header */
-header { background:var(--bg2); border-bottom:1px solid var(--border); padding:1.5rem 1.25rem 1.1rem; text-align:center; }
-.header-label { font-size:11px; letter-spacing:0.2em; color:var(--green); text-transform:uppercase; margin-bottom:0.3rem; }
-header h1 { font-family:'Noto Serif TC',serif; font-size:1.6rem; font-weight:600; color:var(--text); line-height:1.3; }
-.header-sub { font-size:13px; color:var(--text2); margin-top:0.25rem; }
-.badges { display:flex; justify-content:center; gap:7px; flex-wrap:wrap; margin-top:0.8rem; }
-.badge { display:inline-flex; align-items:center; gap:5px; border-radius:20px; padding:3px 11px; font-size:11px; text-decoration:none; }
-.badge-gold  { background:rgba(26,92,48,0.1);  border:1px solid rgba(26,92,48,0.3);  color:var(--green); }
-.badge-blue  { background:var(--blue-dim);      border:1px solid var(--blue-border);  color:var(--blue); }
-.badge-sheet { background:var(--bg3); border:1px solid var(--border2); color:var(--text2); }
-.badge-sheet:hover { background:var(--bg4); color:var(--text); }
+header { position:relative; border-bottom:1px solid var(--border); padding:2rem 1.25rem 1.5rem; text-align:center; overflow:hidden; background-color:#1a2e1a; }
+header::before { content:""; position:absolute; inset:0; background-image:url("https://oldchou.github.io/Sendai-2026/sendai-hero.webp"); background-size:cover; background-position:center 55%; opacity:0.35; z-index:0; }
+header > * { position:relative; z-index:1; }
+.header-label { font-size:11px; letter-spacing:0.2em; color:#a8d8b0; text-transform:uppercase; margin-bottom:0.3rem; }
+header h1 { font-family:"Noto Serif TC",serif; font-size:1.65rem; font-weight:600; color:#ffffff; line-height:1.3; text-shadow:0 1px 6px rgba(0,0,0,0.4); }
+.header-sub { font-size:13px; color:rgba(255,255,255,0.72); margin-top:0.2rem; }
+.badges { display:flex; justify-content:center; gap:7px; flex-wrap:wrap; margin-top:0.9rem; }
+.badge { display:inline-flex; align-items:center; gap:5px; border-radius:20px; padding:3px 11px; font-size:11px; text-decoration:none; backdrop-filter:blur(4px); }
+.badge-gold  { background:rgba(26,92,48,0.55);  border:1px solid rgba(160,220,160,0.4); color:#c8f0c8; }
+.badge-blue  { background:rgba(37,84,160,0.5);  border:1px solid rgba(140,180,255,0.4); color:#c0d8ff; }
+.badge-sheet { background:rgba(255,255,255,0.18); border:1px solid rgba(255,255,255,0.3); color:rgba(255,255,255,0.85); }
+.badge-sheet:hover { background:rgba(255,255,255,0.28); color:#ffffff; }
 .dot { width:5px; height:5px; border-radius:50%; background:currentColor; flex-shrink:0; }
 
-/* tabs */
 .days-nav { display:flex; overflow-x:auto; background:var(--bg2); border-bottom:1px solid var(--border); padding:0 0.5rem; scrollbar-width:none; position:sticky; top:0; z-index:50; box-shadow:0 1px 4px rgba(0,0,0,0.04); }
 .days-nav::-webkit-scrollbar { display:none; }
 .day-tab { flex-shrink:0; padding:0.6rem 0.9rem; font-size:12px; color:var(--text2); cursor:pointer; border-bottom:2px solid transparent; transition:all 0.18s; white-space:nowrap; text-align:center; line-height:1.4; }
@@ -58,12 +57,10 @@ header h1 { font-family:'Noto Serif TC',serif; font-size:1.6rem; font-weight:600
 .day-tab:hover { color:var(--text); }
 .tab-sub { font-size:10px; opacity:0.6; display:block; }
 
-/* main */
 main { padding:1rem 1rem 5.5rem; max-width:480px; margin:0 auto; }
 .day-section { display:none; }
 .day-section.active { display:block; }
 
-/* day header */
 .day-header { display:flex; align-items:center; gap:9px; margin:0.3rem 0 1.1rem; }
 .day-badge { font-size:10px; font-weight:700; letter-spacing:0.08em; padding:3px 9px; border-radius:4px; flex-shrink:0; }
 .day-badge.normal   { background:var(--blue-dim);  color:var(--blue);  border:1px solid var(--blue-border); }
@@ -71,7 +68,6 @@ main { padding:1rem 1rem 5.5rem; max-width:480px; margin:0 auto; }
 .day-title { font-size:14px; font-weight:500; color:var(--text); flex:1; }
 .theme-tag { font-size:10px; color:var(--text3); padding:2px 7px; border-radius:8px; background:var(--bg4); border:1px solid var(--border); flex-shrink:0; }
 
-/* timeline */
 .event-list { display:flex; flex-direction:column; }
 .event-item { display:flex; min-height:3.8rem; }
 .tl-col { width:56px; flex-shrink:0; position:relative; display:flex; flex-direction:column; align-items:center; }
@@ -85,7 +81,6 @@ main { padding:1rem 1rem 5.5rem; max-width:480px; margin:0 auto; }
 .tl-dot.car     { background:var(--red-dim);    border:2px solid var(--red); }
 .tl-dot.site    { background:var(--bg4);        border:2px solid var(--text3); }
 
-/* cards */
 .event-card { flex:1; border-radius:10px; padding:0; margin:0.4rem 0 0.4rem 8px; overflow:hidden; border-left-width:3px; border-left-style:solid; }
 .event-card.flight { background:var(--blue-dim);   border-color:var(--blue);   border-top:1px solid var(--blue-border);   border-right:1px solid var(--blue-border);   border-bottom:1px solid var(--blue-border); }
 .event-card.race   { background:var(--green-dim);  border-color:var(--green);  border-top:1px solid var(--green-border);  border-right:1px solid var(--green-border);  border-bottom:1px solid var(--green-border); }
@@ -120,7 +115,6 @@ main { padding:1rem 1rem 5.5rem; max-width:480px; margin:0 auto; }
 .ev-link { display:inline-flex; align-items:center; gap:4px; margin-top:7px; font-size:11px; color:var(--blue); text-decoration:none; }
 .ev-link:hover { text-decoration:underline; }
 
-/* people */
 .people { display:flex; flex-wrap:wrap; gap:4px; margin-top:7px; }
 .person { font-size:10px; padding:2px 8px; border-radius:10px; }
 .event-card.flight .person { background:rgba(37,84,160,0.1);  color:var(--blue);   border:1px solid var(--blue-border); }
@@ -131,7 +125,6 @@ main { padding:1rem 1rem 5.5rem; max-width:480px; margin:0 auto; }
 .event-card.site   .person { background:var(--bg4); color:var(--text2); border:1px solid var(--border2); }
 .person.michael { font-weight:500; border-width:1.5px !important; }
 
-/* footer */
 footer { position:fixed; bottom:0; left:0; right:0; background:var(--bg2); border-top:1px solid var(--border); padding:0.5rem 0.6rem; display:flex; gap:5px; z-index:100; box-shadow:0 -1px 4px rgba(0,0,0,0.04); }
 .ft-btn { flex:1; background:transparent; border:1px solid var(--border); border-radius:8px; color:var(--text2); font-size:10px; padding:5px 2px; cursor:pointer; font-family:'Noto Sans TC',sans-serif; transition:all 0.15s; line-height:1.4; text-align:center; }
 .ft-btn:hover { background:var(--bg3); color:var(--text); border-color:var(--border2); }
@@ -180,7 +173,6 @@ footer { position:fixed; bottom:0; left:0; right:0; background:var(--bg2); borde
           <div class="ev-type">去程航班 · BR 118</div>
           <div class="ev-title">Depart TPE → SDJ</div>
           <div class="people"><span class="person">Jason</span><span class="person">Penny</span><span class="person">Alina</span><span class="person">Gary</span></div>
-          <div class="ev-hint">出發前確認護照、報名確認信、跑鞋都已打包</div>
         </div>
       </div>
     </div>
@@ -238,7 +230,6 @@ footer { position:fixed; bottom:0; left:0; right:0; background:var(--bg2); borde
           <div class="ev-title">Hotel Grand Bach Sendai</div>
           <div class="ev-address">宮城県仙台市青葉区中央4-6-1</div>
           <div class="people"><span class="person michael">Michael</span><span class="person">Leslie</span><span class="person">Mikey</span><span class="person">Gary</span><span class="person">Jason</span><span class="person">Penny</span><span class="person">Alina</span></div>
-          <div class="ev-hint">仙台市中心，步行可達各主要景點</div>
           <span class="ev-tag tag-note">Check-in 時間 15:00</span>
           <a class="ev-link" href="https://maps.app.goo.gl/AHFfAjYG7bC4iCT59" target="_blank">Google Maps ↗</a>
         </div>
@@ -279,9 +270,23 @@ footer { position:fixed; bottom:0; left:0; right:0; background:var(--bg2); borde
       <div class="event-card site">
         <div class="card-body">
           <div class="ev-type">晨間活動</div>
-          <div class="ev-title">晨跑 30 min</div>
-          <div class="ev-hint">輕鬆配速，賽前 -2 天保存體力</div>
+          <div class="ev-title">仙台市晨跑 30 min</div>
+          <div class="ev-hint">輕鬆配速，感受仙台街道。賽前 -2 天，保存體力</div>
           <span class="ev-tag tag-note">比賽 -2 天</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="event-item">
+      <div class="tl-col"><div class="tl-line"></div><div class="tl-dot food"></div><div class="tl-time">早餐</div></div>
+      <div class="event-card food">
+        <img class="card-img" src="https://tblg.k-img.com/restaurant/images/Rvw/354921/640x640_rect_99cb49c21d73559125e6e738a0cb5111.jpg" alt="Echoes" onerror="this.style.display='none'">
+        <div class="card-body">
+          <div class="ev-type">早餐</div>
+          <div class="ev-title">Echoes</div>
+          <div class="ev-address">宮城県仙台市青葉区大町2-3-12</div>
+          <div class="ev-hint">結合咖啡、餐飲的複合式空間，由老建築改造。早餐盤與手沖咖啡評價極高</div>
+          <a class="ev-link" href="https://maps.app.goo.gl/wmQNHEFTmKLWsenD9" target="_blank">Google Maps ↗</a>
         </div>
       </div>
     </div>
@@ -306,7 +311,7 @@ footer { position:fixed; bottom:0; left:0; right:0; background:var(--bg2); borde
           <div class="ev-title">松島灣遊船</div>
           <div class="ev-en">Matsushima Bay Cruise</div>
           <div class="ev-address">宮城県宮城郡松島町松島町内85</div>
-          <div class="ev-hint">搭船遊覽日本三景松島灣，近距離欣賞各具特色的奇岩小島</div>
+          <div class="ev-hint">搭船遊覽日本三景松島灣，欣賞各具特色的奇岩小島</div>
           <span class="ev-tag tag-warn">建議先看好船班時間</span>
         </div>
       </div>
@@ -322,7 +327,6 @@ footer { position:fixed; bottom:0; left:0; right:0; background:var(--bg2); borde
           <div class="ev-en">Matsushima Fish Market</div>
           <div class="ev-address">宮城県宮城郡松島町松島普賢堂4-10</div>
           <div class="ev-hint">提供新鮮海鮮，特別是著名的松島牡蠣與海鮮丼</div>
-          <span class="ev-tag tag-info">推薦品嚐現烤牡蠣</span>
           <a class="ev-link" href="https://maps.app.goo.gl/H1Z4ynJciyD6BhDs6" target="_blank">Google Maps ↗</a>
         </div>
       </div>
@@ -406,6 +410,33 @@ footer { position:fixed; bottom:0; left:0; right:0; background:var(--bg2); borde
   <div class="event-list">
 
     <div class="event-item">
+      <div class="tl-col"><div class="tl-line"></div><div class="tl-dot food"></div><div class="tl-time">早餐</div></div>
+      <div class="event-card food">
+        <img class="card-img" src="https://tblg.k-img.com/restaurant/images/Rvw/279569/640x640_rect_1c6fadf3a5c7ee49795684f4f890b9e9.jpg" alt="Hey" onerror="this.style.display='none'">
+        <div class="card-body">
+          <div class="ev-type">早餐</div>
+          <div class="ev-title">Hey・甜甜圈</div>
+          <div class="ev-address">宮城県仙台市青葉区一番町1-4-26</div>
+          <div class="ev-hint">仙台超人氣早午餐店，以美味的甜甜圈聞名。店內氣氛活潑，是當地年輕人的熱門聚集地</div>
+          <a class="ev-link" href="https://maps.app.goo.gl/MrYEgbzFYbLYDNrZ9" target="_blank">Google Maps ↗</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="event-item">
+      <div class="tl-col"><div class="tl-line"></div><div class="tl-dot race"></div><div class="tl-time">10:00</div></div>
+      <div class="event-card race">
+        <div class="card-body">
+          <div class="ev-type">選手服務 · 10:00–17:00</div>
+          <div class="ev-title">馬拉松 Check-in・仙台馬 EXPO</div>
+          <div class="ev-address">宮城県仙台市宮城野区新田東4-1-1（弘進橡膠競技場）</div>
+          <div class="ev-hint">選手報到、領取號碼布，買紀念品</div>
+          <span class="ev-tag tag-warn">勿忘攜帶報名確認信</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="event-item">
       <div class="tl-col"><div class="tl-line"></div><div class="tl-dot site"></div><div class="tl-time">上午</div></div>
       <div class="event-card site">
         <img class="card-img" src="https://www.bring-you.info/imgs/2024/10/Osaki-Hachimangu-6.jpg" alt="大崎八幡宮" onerror="this.style.display='none'">
@@ -414,8 +445,8 @@ footer { position:fixed; bottom:0; left:0; right:0; background:var(--bg2); borde
           <div class="ev-title">大崎八幡宮・求必勝御守</div>
           <div class="ev-en">Osaki Hachiman-gu</div>
           <div class="ev-address">宮城県仙台市青葉区八幡4-6-1</div>
-          <div class="ev-hint">仙台總鎮守，祈求勝負運的靈驗地點。建築的黑漆金飾非常壯觀</div>
-          <span class="ev-tag tag-race">完賽祈願好去處</span>
+          <div class="ev-hint">仙台總鎮守，祈求勝負運的靈驗地點。黑漆金飾桃山建築非常壯觀</div>
+          <span class="ev-tag tag-race">明天比賽，祈願必勝！</span>
           <a class="ev-link" href="https://maps.app.goo.gl/5TcD2iCudD8RRU9V8" target="_blank">Google Maps ↗</a>
         </div>
       </div>
@@ -430,9 +461,25 @@ footer { position:fixed; bottom:0; left:0; right:0; background:var(--bg2); borde
           <div class="ev-title">瑞鳳殿</div>
           <div class="ev-en">Zuihoden Mausoleum</div>
           <div class="ev-address">宮城県仙台市青葉区霊屋下23-2</div>
-          <div class="ev-hint">仙台藩祖伊達政宗的靈屋，色彩極其斑斕奪目</div>
+          <div class="ev-hint">仙台藩祖伊達政宗的靈廟，色彩極其斑斕奪目</div>
           <span class="ev-tag tag-note">位於小山丘上，周邊森林環境清幽</span>
           <a class="ev-link" href="https://maps.app.goo.gl/JaGbRZ9soHpHrPrQA" target="_blank">Google Maps ↗</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="event-item">
+      <div class="tl-col"><div class="tl-line"></div><div class="tl-dot site"></div><div class="tl-time">下午</div></div>
+      <div class="event-card site">
+        <img class="card-img" src="https://look2uptravel.com/wp-content/uploads/__pic_pimg_tw_look2up_1685594068-3567974354-g_l_jpg.jpg" alt="仙台城跡" onerror="this.style.display='none'">
+        <div class="card-body">
+          <div class="ev-type">觀光</div>
+          <div class="ev-title">仙台城跡</div>
+          <div class="ev-en">Sendai Castle Ruins</div>
+          <div class="ev-address">宮城県仙台市青葉区川内1</div>
+          <div class="ev-hint">仙台藩祖伊達政宗的居城遺址，巨大石牆仍可感受當年盛況</div>
+          <span class="ev-tag tag-note">著名的伊達政宗騎馬像，可俯瞰仙台市區</span>
+          <a class="ev-link" href="https://maps.app.goo.gl/8QtS1XnUeAdQY2zn9" target="_blank">Google Maps ↗</a>
         </div>
       </div>
     </div>
@@ -451,13 +498,17 @@ footer { position:fixed; bottom:0; left:0; right:0; background:var(--bg2); borde
     </div>
 
     <div class="event-item">
-      <div class="tl-col"><div class="tl-line"></div><div class="tl-dot food"></div><div class="tl-time">晚餐</div></div>
+      <div class="tl-col"><div class="tl-line"></div><div class="tl-dot food"></div><div class="tl-time">18:30</div></div>
       <div class="event-card food">
+        <img class="card-img" src="https://cdn.r-corona.jp/prd.rb.r-corona.jp/assets/site_files/ug5v4l9k/30105784/jceo_w1140h600.jpg" alt="北海道炉端めんめ" onerror="this.style.display='none'">
         <div class="card-body">
           <div class="ev-type">選手之夜 · Carbo Loading</div>
-          <div class="ev-title">賽前碳水補給晚餐（TBD）</div>
-          <div class="ev-hint">盡量吃高碳水！白飯、烏龍麵、義大利麵，避免高脂肪與高纖維食物</div>
+          <div class="ev-title">北海道 炉端 めんめ 仙台PARCO2店</div>
+          <div class="ev-en">Hokkaido Robata Menme Sendai PARCO2</div>
+          <div class="ev-address">宮城県仙台市青葉区中央3-7-5 PARCO2 1F</div>
+          <div class="ev-hint">專注於北海道食材的爐端燒，新鮮海產與烤魚。盡量吃高碳水！避免高脂肪與高纖維食物</div>
           <span class="ev-tag tag-race">明天是比賽日！</span>
+          <a class="ev-link" href="https://maps.app.goo.gl/9Hp1JuBmPpBohaHCA" target="_blank">Google Maps ↗</a>
         </div>
       </div>
     </div>
@@ -523,26 +574,32 @@ footer { position:fixed; bottom:0; left:0; right:0; background:var(--bg2); borde
     </div>
 
     <div class="event-item">
-      <div class="tl-col"><div class="tl-line"></div><div class="tl-dot site"></div><div class="tl-time">下午</div></div>
+      <div class="tl-col"><div class="tl-line"></div><div class="tl-dot site"></div><div class="tl-time">午後</div></div>
       <div class="event-card site">
-        <img class="card-img" src="https://d1grca2t3zpuug.cloudfront.net/2025/06/202506suizokukan016-860x500-1750258493.webp" alt="仙台海洋森林水族館" onerror="this.style.display='none'">
+        <img class="card-img" src="https://www.tohokukanko.jp/lsc/upfile/spot/0000/1072/1072_6_l.jpg" alt="仙台媒體中心" onerror="this.style.display='none'">
         <div class="card-body">
-          <div class="ev-type">賽後選擇</div>
-          <div class="ev-title">仙台媒體中心 or 海洋森林水族館</div>
-          <div class="ev-hint">賽後放鬆去處。水族館有企鵝走路與海豚表演，媒體中心為伊東豐雄建築傑作</div>
-          <a class="ev-link" href="https://maps.app.goo.gl/od8M8QacC1mvjwRn6" target="_blank">水族館地圖 ↗</a>
+          <div class="ev-type">賽後活動</div>
+          <div class="ev-title">仙台媒體中心</div>
+          <div class="ev-en">Sendai Mediatheque</div>
+          <div class="ev-address">宮城県仙台市青葉区春日町2-1</div>
+          <div class="ev-hint">由伊東豐雄設計，以「管狀結構」著稱的建築大師傑作</div>
+          <span class="ev-tag tag-note">一樓商店與透明電梯結構值得一看</span>
+          <a class="ev-link" href="https://maps.app.goo.gl/jHwJdLo5JL324g1J7" target="_blank">Google Maps ↗</a>
         </div>
       </div>
     </div>
 
     <div class="event-item">
-      <div class="tl-col"><div class="tl-line"></div><div class="tl-dot food"></div><div class="tl-time">晚餐</div></div>
+      <div class="tl-col"><div class="tl-line"></div><div class="tl-dot food"></div><div class="tl-time">18:15</div></div>
       <div class="event-card food">
+        <img class="card-img" src="https://team-toranomon.com/images/spal/grilled-dish/featur-image03.jpg" alt="Kotora" onerror="this.style.display='none'">
         <div class="card-body">
           <div class="ev-type">完賽慶功宴</div>
-          <div class="ev-title">慶功宴（TBD）</div>
-          <div class="ev-hint">你跑完了，盡情享用！</div>
+          <div class="ev-title">Kotora S-Pal Sendai</div>
+          <div class="ev-address">宮城県仙台市青葉区中央1-6-1 Herb SENDAI 8F</div>
+          <div class="ev-hint">位於車站前的優質燒肉店，主打米澤牛、仙台牛等嚴選和牛，餐廳氛圍優雅。靠窗位置可俯瞰仙台站前街景</div>
           <span class="ev-tag tag-info">完賽獎牌合照必拍</span>
+          <a class="ev-link" href="https://maps.app.goo.gl/JotDfWMe18HwJym86" target="_blank">Google Maps ↗</a>
         </div>
       </div>
     </div>
@@ -582,7 +639,7 @@ footer { position:fixed; bottom:0; left:0; right:0; background:var(--bg2); borde
     </div>
 
     <div class="event-item">
-      <div class="tl-col"><div class="tl-line"></div><div class="tl-dot site"></div><div class="tl-time">上午</div></div>
+      <div class="tl-col"><div class="tl-line"></div><div class="tl-dot site"></div><div class="tl-time">13:30</div></div>
       <div class="event-card site">
         <img class="card-img" src="https://www.nikka.com/distilleries/miyagikyo/img/about_img_intro.webp" alt="Nikka 宮城峽蒸餾所" onerror="this.style.display='none'">
         <div class="card-body">
@@ -605,7 +662,6 @@ footer { position:fixed; bottom:0; left:0; right:0; background:var(--bg2); borde
           <div class="ev-type">回程航班 · BR 117</div>
           <div class="ev-title">Depart SDJ → TPE</div>
           <div class="people"><span class="person">Jason</span><span class="person">Penny</span><span class="person">Alina</span></div>
-          <div class="ev-hint">部分成員先行返台</div>
         </div>
       </div>
     </div>
@@ -647,7 +703,7 @@ footer { position:fixed; bottom:0; left:0; right:0; background:var(--bg2); borde
           <div class="ev-title">鳳鳴四十八瀑布</div>
           <div class="ev-en">Houmei Shijuhachi Taki</div>
           <div class="ev-address">宮城県仙台市青葉区作並棒目木</div>
-          <div class="ev-hint">國道48號旁的自然景觀，水聲如鳳凰鳴叫般清脆</div>
+          <div class="ev-hint">國道 48 號旁的自然景觀，水聲如鳳凰鳴叫般清脆</div>
           <span class="ev-tag tag-note">下車走 1 分鐘即可觀瀑</span>
           <a class="ev-link" href="https://maps.app.goo.gl/j2EVT7VMdS3Bsctr5" target="_blank">Google Maps ↗</a>
         </div>
@@ -684,12 +740,12 @@ footer { position:fixed; bottom:0; left:0; right:0; background:var(--bg2); borde
     <div class="event-item">
       <div class="tl-col"><div class="tl-line"></div><div class="tl-dot site"></div><div class="tl-time">下午</div></div>
       <div class="event-card site">
-        <img class="card-img" src="https://tw.visitmiyagi.com/wp-content/uploads/2024/02/2_Akiu-Winery_118-1200x900.jpg.webp" alt="秋保葡萄酒廠" onerror="this.style.display='none'">
+        <img class="card-img" src="https://www.tohokukanko.jp/lsc/upfile/spot/0000/1072/1072_6_l.jpg" alt="秋保葡萄酒廠" onerror="this.style.display='none'">
         <div class="card-body">
           <div class="ev-type">下午選擇 A</div>
           <div class="ev-title">秋保葡萄酒廠</div>
           <div class="ev-en">Akiu Winery</div>
-          <div class="ev-address">宮城県仙台市太白区秋保町湯元枇杷原12-7</div>
+          <div class="ev-address">宮城県仙台市太白区秋保町湯元</div>
           <div class="ev-hint">仙台首間酒莊，致力於振興災後農業，環境優美且設有咖啡廳</div>
           <a class="ev-link" href="https://maps.app.goo.gl/jHwJdLo5JL324g1J7" target="_blank">Google Maps ↗</a>
         </div>
